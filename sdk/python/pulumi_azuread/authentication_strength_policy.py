@@ -76,13 +76,15 @@ class _AuthenticationStrengthPolicyState:
     def __init__(__self__, *,
                  allowed_combinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  description: pulumi.Input[Optional[_builtins.str]] = None,
-                 display_name: pulumi.Input[Optional[_builtins.str]] = None):
+                 display_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 object_id: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering AuthenticationStrengthPolicy resources.
 
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_combinations: List of allowed authentication methods for this authentication strength policy.
         :param pulumi.Input[_builtins.str] description: The description for this authentication strength policy.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this authentication strength policy.
+        :param pulumi.Input[_builtins.str] object_id: The object ID of the authentication strength policy.
         """
         if allowed_combinations is not None:
             pulumi.set(__self__, "allowed_combinations", allowed_combinations)
@@ -90,6 +92,8 @@ class _AuthenticationStrengthPolicyState:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
+        if object_id is not None:
+            pulumi.set(__self__, "object_id", object_id)
 
     @_builtins.property
     @pulumi.getter(name="allowedCombinations")
@@ -126,6 +130,18 @@ class _AuthenticationStrengthPolicyState:
     @display_name.setter
     def display_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "display_name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> pulumi.Input[Optional[_builtins.str]]:
+        """
+        The object ID of the authentication strength policy.
+        """
+        return pulumi.get(self, "object_id")
+
+    @object_id.setter
+    def object_id(self, value: pulumi.Input[Optional[_builtins.str]]):
+        pulumi.set(self, "object_id", value)
 
 
 @pulumi.type_token("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy")
@@ -306,6 +322,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
+            __props__.__dict__["object_id"] = None
         super(AuthenticationStrengthPolicy, __self__).__init__(
             'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy',
             resource_name,
@@ -318,7 +335,8 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             allowed_combinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
             description: pulumi.Input[Optional[_builtins.str]] = None,
-            display_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthenticationStrengthPolicy':
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None) -> 'AuthenticationStrengthPolicy':
         """
         Get an existing AuthenticationStrengthPolicy resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -329,6 +347,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] allowed_combinations: List of allowed authentication methods for this authentication strength policy.
         :param pulumi.Input[_builtins.str] description: The description for this authentication strength policy.
         :param pulumi.Input[_builtins.str] display_name: The friendly name for this authentication strength policy.
+        :param pulumi.Input[_builtins.str] object_id: The object ID of the authentication strength policy.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -337,6 +356,7 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         __props__.__dict__["allowed_combinations"] = allowed_combinations
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
+        __props__.__dict__["object_id"] = object_id
         return AuthenticationStrengthPolicy(resource_name, opts=opts, __props__=__props__)
 
     @_builtins.property
@@ -362,4 +382,12 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         The friendly name for this authentication strength policy.
         """
         return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> pulumi.Output[_builtins.str]:
+        """
+        The object ID of the authentication strength policy.
+        """
+        return pulumi.get(self, "object_id")
 

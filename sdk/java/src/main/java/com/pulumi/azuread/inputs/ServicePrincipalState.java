@@ -432,7 +432,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     /**
      * A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
     @Import(name="tags")
@@ -441,7 +441,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
     /**
      * @return A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
      * 
-     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+     * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
      * 
      */
     public Optional<Output<List<String>>> tags() {
@@ -1197,7 +1197,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
          * 
          * @return builder
          * 
@@ -1210,7 +1210,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
          * 
          * @return builder
          * 
@@ -1222,7 +1222,7 @@ public final class ServicePrincipalState extends com.pulumi.resources.ResourceAr
         /**
          * @param tags A set of tags to apply to the service principal for configuring specific behaviours of the service principal. Note that these are not provided for use by practitioners. Cannot be used together with the `featureTags` block.
          * 
-         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behavior of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
+         * &gt; **Tags and Features** Azure Active Directory uses special tag values to configure the behaviour of service principals. These can be specified using either the `tags` property or with the `featureTags` block. If you need to set any custom tag values not supported by the `featureTags` block, it&#39;s recommended to use the `tags` property. Tag values set for the linked application will also propagate to this service principal.
          * 
          * @return builder
          * 

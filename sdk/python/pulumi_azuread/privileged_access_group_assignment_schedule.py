@@ -38,7 +38,7 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
         :param pulumi.Input[_builtins.str] duration: The duration that this assignment is valid for, formatted as an ISO8601 duration (e.g. P30D for 30 days, PT3H for three hours).
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.str] justification: The justification for this assignment. May be required by the role policy.
-        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assigment permanently valid.
+        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assignment permanently valid.
                
                At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         :param pulumi.Input[_builtins.str] start_date: The date from which this assignment is valid, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z). If not provided, the assignment is immediately valid.
@@ -139,7 +139,7 @@ class PrivilegedAccessGroupAssignmentScheduleArgs:
     @pulumi.getter(name="permanentAssignment")
     def permanent_assignment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Is this assigment permanently valid.
+        Is this assignment permanently valid.
 
         At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         """
@@ -208,7 +208,7 @@ class _PrivilegedAccessGroupAssignmentScheduleState:
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.str] group_id: The Object ID of the Azure AD group to which the principal will be assigned.
         :param pulumi.Input[_builtins.str] justification: The justification for this assignment. May be required by the role policy.
-        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assigment permanently valid.
+        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assignment permanently valid.
                
                At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         :param pulumi.Input[_builtins.str] principal_id: The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
@@ -304,7 +304,7 @@ class _PrivilegedAccessGroupAssignmentScheduleState:
     @pulumi.getter(name="permanentAssignment")
     def permanent_assignment(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
-        Is this assigment permanently valid.
+        Is this assignment permanently valid.
 
         At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         """
@@ -441,7 +441,7 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.str] group_id: The Object ID of the Azure AD group to which the principal will be assigned.
         :param pulumi.Input[_builtins.str] justification: The justification for this assignment. May be required by the role policy.
-        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assigment permanently valid.
+        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assignment permanently valid.
                
                At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         :param pulumi.Input[_builtins.str] principal_id: The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
@@ -581,7 +581,7 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] expiration_date: The date that this assignment expires, formatted as an RFC3339 date string (e.g. 2018-01-01T01:02:03Z).
         :param pulumi.Input[_builtins.str] group_id: The Object ID of the Azure AD group to which the principal will be assigned.
         :param pulumi.Input[_builtins.str] justification: The justification for this assignment. May be required by the role policy.
-        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assigment permanently valid.
+        :param pulumi.Input[_builtins.bool] permanent_assignment: Is this assignment permanently valid.
                
                At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         :param pulumi.Input[_builtins.str] principal_id: The Object ID of the principal to be assigned to the above group. Can be either a user or a group.
@@ -651,7 +651,7 @@ class PrivilegedAccessGroupAssignmentSchedule(pulumi.CustomResource):
     @pulumi.getter(name="permanentAssignment")
     def permanent_assignment(self) -> pulumi.Output[_builtins.bool]:
         """
-        Is this assigment permanently valid.
+        Is this assignment permanently valid.
 
         At least one of `expiration_date`, `duration`, or `permanent_assignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         """
