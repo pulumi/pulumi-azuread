@@ -61,12 +61,28 @@ public final class AuthenticationStrengthPolicyState extends com.pulumi.resource
         return Optional.ofNullable(this.displayName);
     }
 
+    /**
+     * The object ID of the authentication strength policy.
+     * 
+     */
+    @Import(name="objectId")
+    private @Nullable Output<String> objectId;
+
+    /**
+     * @return The object ID of the authentication strength policy.
+     * 
+     */
+    public Optional<Output<String>> objectId() {
+        return Optional.ofNullable(this.objectId);
+    }
+
     private AuthenticationStrengthPolicyState() {}
 
     private AuthenticationStrengthPolicyState(AuthenticationStrengthPolicyState $) {
         this.allowedCombinations = $.allowedCombinations;
         this.description = $.description;
         this.displayName = $.displayName;
+        this.objectId = $.objectId;
     }
 
     public static Builder builder() {
@@ -158,6 +174,27 @@ public final class AuthenticationStrengthPolicyState extends com.pulumi.resource
          */
         public Builder displayName(String displayName) {
             return displayName(Output.of(displayName));
+        }
+
+        /**
+         * @param objectId The object ID of the authentication strength policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(@Nullable Output<String> objectId) {
+            $.objectId = objectId;
+            return this;
+        }
+
+        /**
+         * @param objectId The object ID of the authentication strength policy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder objectId(String objectId) {
+            return objectId(Output.of(objectId));
         }
 
         public AuthenticationStrengthPolicyState build() {
