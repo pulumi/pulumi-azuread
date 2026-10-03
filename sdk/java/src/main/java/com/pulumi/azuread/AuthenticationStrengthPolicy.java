@@ -143,6 +143,20 @@ public class AuthenticationStrengthPolicy extends com.pulumi.resources.CustomRes
     public Output<String> displayName() {
         return this.displayName;
     }
+    /**
+     * The object ID of the authentication strength policy.
+     * 
+     */
+    @Export(name="objectId", refs={String.class}, tree="[0]")
+    private Output<String> objectId;
+
+    /**
+     * @return The object ID of the authentication strength policy.
+     * 
+     */
+    public Output<String> objectId() {
+        return this.objectId;
+    }
 
     /**
      *

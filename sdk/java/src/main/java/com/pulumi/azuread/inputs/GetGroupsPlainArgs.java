@@ -92,14 +92,14 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
+     * A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignoreMissing`. Defaults to `false`.
      * 
      */
     @Import(name="returnAll")
     private @Nullable Boolean returnAll;
 
     /**
-     * @return A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
+     * @return A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignoreMissing`. Defaults to `false`.
      * 
      */
     public Optional<Boolean> returnAll() {
@@ -231,7 +231,7 @@ public final class GetGroupsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param returnAll A flag to denote if all groups should be fetched and returned. Cannot be specified wth `ignoreMissing`. Defaults to `false`.
+         * @param returnAll A flag to denote if all groups should be fetched and returned. Cannot be specified with `ignoreMissing`. Defaults to `false`.
          * 
          * @return builder
          * 

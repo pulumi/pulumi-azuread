@@ -47,6 +47,8 @@
         "applicationRedirectUris.ts",
         "applicationRegistration.ts",
         "authenticationStrengthPolicy.ts",
+        "authenticationStrengthPolicyFido2CombinationConfiguration.ts",
+        "authenticationStrengthPolicyX509CombinationConfiguration.ts",
         "claimsMappingPolicy.ts",
         "conditionalAccessPolicy.ts",
         "config/index.ts",
@@ -63,6 +65,7 @@
         "getApplication.ts",
         "getApplicationPublishedAppIds.ts",
         "getApplicationTemplate.ts",
+        "getAuthenticationStrengthPolicy.ts",
         "getClientConfig.ts",
         "getDirectoryObject.ts",
         "getDirectoryRoleTemplates.ts",
@@ -77,6 +80,7 @@
         "getUser.ts",
         "getUsers.ts",
         "group.ts",
+        "groupLicense.ts",
         "groupMember.ts",
         "groupRoleManagementPolicy.ts",
         "groupWithoutMembers.ts",
@@ -100,6 +104,7 @@
         "types/output.ts",
         "user.ts",
         "userFlowAttribute.ts",
+        "userLicense.ts",
         "utilities.ts"
     ]
 }

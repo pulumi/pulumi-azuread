@@ -40,7 +40,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _excludedRoles;
 
         /// <summary>
-        /// A list of role IDs excluded from scope of policy.
+        /// A list of role template IDs excluded from scope of policy.
         /// </summary>
         public InputList<string> ExcludedRoles
         {
@@ -88,7 +88,7 @@ namespace Pulumi.AzureAD.Inputs
         private InputList<string>? _includedRoles;
 
         /// <summary>
-        /// A list of role IDs in scope of policy unless explicitly excluded.
+        /// A list of role template IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public InputList<string> IncludedRoles
         {
