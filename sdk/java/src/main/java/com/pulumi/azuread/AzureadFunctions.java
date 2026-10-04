@@ -16,6 +16,8 @@ import com.pulumi.azuread.inputs.GetApplicationArgs;
 import com.pulumi.azuread.inputs.GetApplicationPlainArgs;
 import com.pulumi.azuread.inputs.GetApplicationTemplateArgs;
 import com.pulumi.azuread.inputs.GetApplicationTemplatePlainArgs;
+import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyPlainArgs;
 import com.pulumi.azuread.inputs.GetDirectoryObjectArgs;
 import com.pulumi.azuread.inputs.GetDirectoryObjectPlainArgs;
 import com.pulumi.azuread.inputs.GetDomainsArgs;
@@ -43,6 +45,7 @@ import com.pulumi.azuread.outputs.GetAdministrativeUnitResult;
 import com.pulumi.azuread.outputs.GetApplicationPublishedAppIdsResult;
 import com.pulumi.azuread.outputs.GetApplicationResult;
 import com.pulumi.azuread.outputs.GetApplicationTemplateResult;
+import com.pulumi.azuread.outputs.GetAuthenticationStrengthPolicyResult;
 import com.pulumi.azuread.outputs.GetClientConfigResult;
 import com.pulumi.azuread.outputs.GetDirectoryObjectResult;
 import com.pulumi.azuread.outputs.GetDirectoryRoleTemplatesResult;
@@ -3767,6 +3770,860 @@ public final class AzureadFunctions {
      */
     public static CompletableFuture<GetApplicationTemplateResult> getApplicationTemplatePlain(GetApplicationTemplatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("azuread:index/getApplicationTemplate:getApplicationTemplate", TypeShape.of(GetApplicationTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicy() {
+        return getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicyPlain() {
+        return getAuthenticationStrengthPolicyPlain(GetAuthenticationStrengthPolicyPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs args) {
+        return getAuthenticationStrengthPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicyPlain(GetAuthenticationStrengthPolicyPlainArgs args) {
+        return getAuthenticationStrengthPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy", TypeShape.of(GetAuthenticationStrengthPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static Output<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy", TypeShape.of(GetAuthenticationStrengthPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve information about an authentication strength policy within Azure Active Directory. This can be used to read either the built-in policies supplied by Microsoft, or custom policies created in the tenant.
+     * 
+     * ## API Permissions
+     * 
+     * The following API permissions are required in order to use this data source.
+     * 
+     * When authenticated with a service principal, this data source requires one of the following application roles: `Policy.Read.AuthenticationMethod` or `Policy.Read.All`
+     * 
+     * When authenticated with a user principal, this data source requires one of the following directory roles: `Conditional Access Administrator`, `Security Administrator`, `Security Reader` or `Global Administrator`
+     * 
+     * ## Example Usage
+     * 
+     * *Look up a built-in policy by display name*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .displayName("Multifactor authentication")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * The display names of the built-in policies supplied by Microsoft are:
+     * 
+     * * `Multifactor authentication`
+     * * `Passwordless MFA`
+     * * `Phishing-resistant MFA`
+     * 
+     * *Look up a policy by object ID*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId("00000000-0000-0000-0000-000000000004")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     * *Look up a policy managed elsewhere in the same configuration*
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.azuread.AzureadFunctions;
+     * import com.pulumi.azuread.inputs.GetAuthenticationStrengthPolicyArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = AzureadFunctions.getAuthenticationStrengthPolicy(GetAuthenticationStrengthPolicyArgs.builder()
+     *             .objectId(exampleAzureadAuthenticationStrengthPolicy.get("objectId"))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public static CompletableFuture<GetAuthenticationStrengthPolicyResult> getAuthenticationStrengthPolicyPlain(GetAuthenticationStrengthPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy", TypeShape.of(GetAuthenticationStrengthPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access the configuration of the AzureAD provider.

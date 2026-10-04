@@ -108,10 +108,12 @@ __all__ = [
     'GetApplicationSinglePageApplicationResult',
     'GetApplicationWebResult',
     'GetApplicationWebImplicitGrantResult',
+    'GetAuthenticationStrengthPolicyCombinationConfigurationResult',
     'GetDirectoryRoleTemplatesRoleTemplateResult',
     'GetDirectoryRolesRoleResult',
     'GetDomainsDomainResult',
     'GetGroupDynamicMembershipResult',
+    'GetGroupsGroupResult',
     'GetNamedLocationCountryResult',
     'GetNamedLocationIpResult',
     'GetServicePrincipalAppRoleResult',
@@ -2136,7 +2138,7 @@ class ConditionalAccessPolicyConditions(dict):
         :param 'ConditionalAccessPolicyConditionsClientApplicationsArgs' client_applications: An `client_applications` block as documented below, which specifies service principals included in and excluded from the policy.
         :param 'ConditionalAccessPolicyConditionsDevicesArgs' devices: A `devices` block as documented below, which describes devices to be included in and excluded from the policy. A `devices` block can be added to an existing policy, but removing the `devices` block forces a new resource to be created.
         :param _builtins.str insider_risk_levels: The insider risk level in the policy. Possible values are: `minor`, `moderate`, `elevated`, `unknownFutureValue`.
-        :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        :param 'ConditionalAccessPolicyConditionsLocationsArgs' locations: A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
         :param 'ConditionalAccessPolicyConditionsPlatformsArgs' platforms: A `platforms` block as documented below, which specifies platforms included in and excluded from the policy.
         :param Sequence[_builtins.str] service_principal_risk_levels: A list of service principal sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `none`, `unknownFutureValue`.
         :param Sequence[_builtins.str] sign_in_risk_levels: A list of user sign-in risk levels included in the policy. Possible values are: `low`, `medium`, `high`, `hidden`, `none`, `unknownFutureValue`.
@@ -2224,7 +2226,7 @@ class ConditionalAccessPolicyConditions(dict):
     @pulumi.getter
     def locations(self) -> Optional['outputs.ConditionalAccessPolicyConditionsLocations']:
         """
-        A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+        A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
         """
         return pulumi.get(self, "locations")
 
@@ -2660,11 +2662,11 @@ class ConditionalAccessPolicyConditionsUsers(dict):
         """
         :param Sequence[_builtins.str] excluded_groups: A list of group IDs excluded from scope of policy.
         :param Sequence['ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUserArgs'] excluded_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users excluded from scope of policy.
-        :param Sequence[_builtins.str] excluded_roles: A list of role IDs excluded from scope of policy.
+        :param Sequence[_builtins.str] excluded_roles: A list of role template IDs excluded from scope of policy.
         :param Sequence[_builtins.str] excluded_users: A list of user IDs excluded from scope of policy and/or `GuestsOrExternalUsers`.
         :param Sequence[_builtins.str] included_groups: A list of group IDs in scope of policy unless explicitly excluded.
         :param Sequence['ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUserArgs'] included_guests_or_external_users: A `guests_or_external_users` block as documented below, which specifies internal guests and external users in scope of policy.
-        :param Sequence[_builtins.str] included_roles: A list of role IDs in scope of policy unless explicitly excluded.
+        :param Sequence[_builtins.str] included_roles: A list of role template IDs in scope of policy unless explicitly excluded.
         :param Sequence[_builtins.str] included_users: A list of user IDs in scope of policy unless explicitly excluded, or `None` or `All` or `GuestsOrExternalUsers`.
                
                > At least one of `included_groups`, `included_guests_or_external_users`, `included_roles` or `included_users` must be specified.
@@ -2706,7 +2708,7 @@ class ConditionalAccessPolicyConditionsUsers(dict):
     @pulumi.getter(name="excludedRoles")
     def excluded_roles(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of role IDs excluded from scope of policy.
+        A list of role template IDs excluded from scope of policy.
         """
         return pulumi.get(self, "excluded_roles")
 
@@ -2738,7 +2740,7 @@ class ConditionalAccessPolicyConditionsUsers(dict):
     @pulumi.getter(name="includedRoles")
     def included_roles(self) -> Optional[Sequence[_builtins.str]]:
         """
-        A list of role IDs in scope of policy unless explicitly excluded.
+        A list of role template IDs in scope of policy unless explicitly excluded.
         """
         return pulumi.get(self, "included_roles")
 
@@ -3289,7 +3291,7 @@ class GroupRoleManagementPolicyActivationRules(dict):
         :param _builtins.bool require_approval: Is approval required for activation. If `true` an `approval_stage` block must be provided.
         :param _builtins.bool require_justification: Is a justification required during activation of the role.
         :param _builtins.bool require_multifactor_authentication: Is multi-factor authentication required to activate the role. Conflicts with `required_conditional_access_authentication_context`.
-        :param _builtins.bool require_ticket_info: Is ticket information requrired during activation of the role.
+        :param _builtins.bool require_ticket_info: Is ticket information required during activation of the role.
         :param _builtins.str required_conditional_access_authentication_context: The Entra ID Conditional Access context that must be present for activation (e.g `c1`). Conflicts with `require_multifactor_authentication`.
         """
         if approval_stage is not None:
@@ -3351,7 +3353,7 @@ class GroupRoleManagementPolicyActivationRules(dict):
     @pulumi.getter(name="requireTicketInfo")
     def require_ticket_info(self) -> Optional[_builtins.bool]:
         """
-        Is ticket information requrired during activation of the role.
+        Is ticket information required during activation of the role.
         """
         return pulumi.get(self, "require_ticket_info")
 
@@ -3624,7 +3626,7 @@ class GroupRoleManagementPolicyNotificationRules(dict):
                  eligible_activations: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleActivations'] = None,
                  eligible_assignments: Optional['outputs.GroupRoleManagementPolicyNotificationRulesEligibleAssignments'] = None):
         """
-        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs' active_assignments: A `notification_target` block as defined below to configure notfications on active role assignments.
+        :param 'GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs' active_assignments: A `notification_target` block as defined below to configure notifications on active role assignments.
         :param 'GroupRoleManagementPolicyNotificationRulesEligibleActivationsArgs' eligible_activations: A `notification_target` block as defined below for configuring notifications on activation of eligible role.
         :param 'GroupRoleManagementPolicyNotificationRulesEligibleAssignmentsArgs' eligible_assignments: A `notification_target` block as defined below to configure notification on eligible role assignments.
                
@@ -3641,7 +3643,7 @@ class GroupRoleManagementPolicyNotificationRules(dict):
     @pulumi.getter(name="activeAssignments")
     def active_assignments(self) -> Optional['outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments']:
         """
-        A `notification_target` block as defined below to configure notfications on active role assignments.
+        A `notification_target` block as defined below to configure notifications on active role assignments.
         """
         return pulumi.get(self, "active_assignments")
 
@@ -5847,6 +5849,87 @@ class GetApplicationWebImplicitGrantResult(dict):
 
 
 @pulumi.output_type
+class GetAuthenticationStrengthPolicyCombinationConfigurationResult(dict):
+    def __init__(__self__, *,
+                 allowed_aaguids: Sequence[_builtins.str],
+                 allowed_issuer_skis: Sequence[_builtins.str],
+                 allowed_policy_oids: Sequence[_builtins.str],
+                 applies_to_combinations: Sequence[_builtins.str],
+                 object_id: _builtins.str,
+                 type: _builtins.str):
+        """
+        :param Sequence[_builtins.str] allowed_aaguids: A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+        :param Sequence[_builtins.str] allowed_issuer_skis: A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+        :param Sequence[_builtins.str] allowed_policy_oids: A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+        :param Sequence[_builtins.str] applies_to_combinations: A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+        :param _builtins.str object_id: The object ID of the authentication strength policy.
+               
+               > One of `display_name` or `object_id` must be specified.
+               
+               > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `object_id` where you need to be certain of matching a specific policy.
+        :param _builtins.str type: The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+        """
+        pulumi.set(__self__, "allowed_aaguids", allowed_aaguids)
+        pulumi.set(__self__, "allowed_issuer_skis", allowed_issuer_skis)
+        pulumi.set(__self__, "allowed_policy_oids", allowed_policy_oids)
+        pulumi.set(__self__, "applies_to_combinations", applies_to_combinations)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "type", type)
+
+    @_builtins.property
+    @pulumi.getter(name="allowedAaguids")
+    def allowed_aaguids(self) -> Sequence[_builtins.str]:
+        """
+        A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+        """
+        return pulumi.get(self, "allowed_aaguids")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedIssuerSkis")
+    def allowed_issuer_skis(self) -> Sequence[_builtins.str]:
+        """
+        A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+        """
+        return pulumi.get(self, "allowed_issuer_skis")
+
+    @_builtins.property
+    @pulumi.getter(name="allowedPolicyOids")
+    def allowed_policy_oids(self) -> Sequence[_builtins.str]:
+        """
+        A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+        """
+        return pulumi.get(self, "allowed_policy_oids")
+
+    @_builtins.property
+    @pulumi.getter(name="appliesToCombinations")
+    def applies_to_combinations(self) -> Sequence[_builtins.str]:
+        """
+        A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+        """
+        return pulumi.get(self, "applies_to_combinations")
+
+    @_builtins.property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> _builtins.str:
+        """
+        The object ID of the authentication strength policy.
+
+        > One of `display_name` or `object_id` must be specified.
+
+        > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `object_id` where you need to be certain of matching a specific policy.
+        """
+        return pulumi.get(self, "object_id")
+
+    @_builtins.property
+    @pulumi.getter
+    def type(self) -> _builtins.str:
+        """
+        The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
 class GetDirectoryRoleTemplatesRoleTemplateResult(dict):
     def __init__(__self__, *,
                  description: _builtins.str,
@@ -6059,6 +6142,61 @@ class GetGroupDynamicMembershipResult(dict):
         The rule that determines membership of this group.
         """
         return pulumi.get(self, "rule")
+
+
+@pulumi.output_type
+class GetGroupsGroupResult(dict):
+    def __init__(__self__, *,
+                 display_name: _builtins.str,
+                 mail_enabled: _builtins.bool,
+                 object_id: _builtins.str,
+                 security_enabled: _builtins.bool):
+        """
+        :param _builtins.str display_name: The display name of the group.
+        :param _builtins.bool mail_enabled: Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        :param _builtins.str object_id: The object ID of the group.
+        :param _builtins.bool security_enabled: Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+               
+               > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "mail_enabled", mail_enabled)
+        pulumi.set(__self__, "object_id", object_id)
+        pulumi.set(__self__, "security_enabled", security_enabled)
+
+    @_builtins.property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> _builtins.str:
+        """
+        The display name of the group.
+        """
+        return pulumi.get(self, "display_name")
+
+    @_builtins.property
+    @pulumi.getter(name="mailEnabled")
+    def mail_enabled(self) -> _builtins.bool:
+        """
+        Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+        """
+        return pulumi.get(self, "mail_enabled")
+
+    @_builtins.property
+    @pulumi.getter(name="objectId")
+    def object_id(self) -> _builtins.str:
+        """
+        The object ID of the group.
+        """
+        return pulumi.get(self, "object_id")
+
+    @_builtins.property
+    @pulumi.getter(name="securityEnabled")
+    def security_enabled(self) -> _builtins.bool:
+        """
+        Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `object_ids`.
+
+        > One of `display_names`, `display_name_prefix`, `object_ids` or `return_all` should be specified. Either `display_name` or `object_ids` _may_ be specified as an empty list, in which case no results will be returned.
+        """
+        return pulumi.get(self, "security_enabled")
 
 
 @pulumi.output_type

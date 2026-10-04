@@ -103,7 +103,7 @@ type GroupRoleManagementPolicy struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// A `notificationRules` block as defined below.
 	NotificationRules GroupRoleManagementPolicyNotificationRulesOutput `pulumi:"notificationRules"`
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId pulumi.StringOutput `pulumi:"roleId"`
 }
 
@@ -157,7 +157,7 @@ type groupRoleManagementPolicyState struct {
 	GroupId *string `pulumi:"groupId"`
 	// A `notificationRules` block as defined below.
 	NotificationRules *GroupRoleManagementPolicyNotificationRules `pulumi:"notificationRules"`
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId *string `pulumi:"roleId"`
 }
 
@@ -176,7 +176,7 @@ type GroupRoleManagementPolicyState struct {
 	GroupId pulumi.StringPtrInput
 	// A `notificationRules` block as defined below.
 	NotificationRules GroupRoleManagementPolicyNotificationRulesPtrInput
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId pulumi.StringPtrInput
 }
 
@@ -195,7 +195,7 @@ type groupRoleManagementPolicyArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// A `notificationRules` block as defined below.
 	NotificationRules *GroupRoleManagementPolicyNotificationRules `pulumi:"notificationRules"`
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId string `pulumi:"roleId"`
 }
 
@@ -211,7 +211,7 @@ type GroupRoleManagementPolicyArgs struct {
 	GroupId pulumi.StringInput
 	// A `notificationRules` block as defined below.
 	NotificationRules GroupRoleManagementPolicyNotificationRulesPtrInput
-	// The type of assignment this policy coveres. Can be either `member` or `owner`.
+	// The type of assignment this policy covers. Can be either `member` or `owner`.
 	RoleId pulumi.StringInput
 }
 
@@ -345,7 +345,7 @@ func (o GroupRoleManagementPolicyOutput) NotificationRules() GroupRoleManagement
 	}).(GroupRoleManagementPolicyNotificationRulesOutput)
 }
 
-// The type of assignment this policy coveres. Can be either `member` or `owner`.
+// The type of assignment this policy covers. Can be either `member` or `owner`.
 func (o GroupRoleManagementPolicyOutput) RoleId() pulumi.StringOutput {
 	return o.ApplyT(func(v *GroupRoleManagementPolicy) pulumi.StringOutput { return v.RoleId }).(pulumi.StringOutput)
 }

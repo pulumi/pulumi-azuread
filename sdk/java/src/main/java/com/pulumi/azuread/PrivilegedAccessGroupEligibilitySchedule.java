@@ -161,7 +161,7 @@ public class PrivilegedAccessGroupEligibilitySchedule extends com.pulumi.resourc
         return Codegen.optional(this.justification);
     }
     /**
-     * Is this assigment permanently valid.
+     * Is this assignment permanently valid.
      * 
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
@@ -170,7 +170,7 @@ public class PrivilegedAccessGroupEligibilitySchedule extends com.pulumi.resourc
     private Output<Boolean> permanentAssignment;
 
     /**
-     * @return Is this assigment permanently valid.
+     * @return Is this assignment permanently valid.
      * 
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 

@@ -118,7 +118,7 @@ export class GroupRoleManagementPolicy extends pulumi.CustomResource {
      */
     declare public readonly notificationRules: pulumi.Output<outputs.GroupRoleManagementPolicyNotificationRules>;
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      */
     declare public readonly roleId: pulumi.Output<string>;
 
@@ -198,7 +198,7 @@ export interface GroupRoleManagementPolicyState {
      */
     notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules | undefined>;
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      */
     roleId?: pulumi.Input<string | undefined>;
 }
@@ -228,7 +228,7 @@ export interface GroupRoleManagementPolicyArgs {
      */
     notificationRules?: pulumi.Input<inputs.GroupRoleManagementPolicyNotificationRules | undefined>;
     /**
-     * The type of assignment this policy coveres. Can be either `member` or `owner`.
+     * The type of assignment this policy covers. Can be either `member` or `owner`.
      */
     roleId: pulumi.Input<string>;
 }
