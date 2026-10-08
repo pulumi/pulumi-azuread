@@ -3,9 +3,9 @@ module user-go
 go 1.26.6
 
 require (
-	github.com/pulumi/pulumi-azuread/sdk/v6 v6.10.1
+	github.com/pulumi/pulumi-azuread/sdk/v6 v6.11.0
 	github.com/pulumi/pulumi-random/sdk/v4 v4.21.2
-	github.com/pulumi/pulumi/sdk/v3 v3.261.0
+	github.com/pulumi/pulumi/sdk/v3 v3.263.0
 )
 
 require (
