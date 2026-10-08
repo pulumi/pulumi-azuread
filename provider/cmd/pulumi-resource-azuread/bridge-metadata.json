@@ -364,6 +364,28 @@
                     }
                 }
             },
+            "azuread_authentication_strength_policy_fido2_combination_configuration": {
+                "current": "azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration",
+                "fields": {
+                    "allowed_aaguids": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_authentication_strength_policy_x509_combination_configuration": {
+                "current": "azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration",
+                "fields": {
+                    "allowed_issuer_skis": {
+                        "maxItemsOne": false
+                    },
+                    "allowed_policy_oids": {
+                        "maxItemsOne": false
+                    },
+                    "applies_to_combinations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "azuread_claims_mapping_policy": {
                 "current": "azuread:index/claimsMappingPolicy:ClaimsMappingPolicy",
                 "fields": {
@@ -606,6 +628,14 @@
                         "maxItemsOne": false
                     },
                     "types": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "azuread_group_license": {
+                "current": "azuread:index/groupLicense:GroupLicense",
+                "fields": {
+                    "disabled_plans": {
                         "maxItemsOne": false
                     }
                 }
@@ -946,6 +976,14 @@
             },
             "azuread_user_flow_attribute": {
                 "current": "azuread:index/userFlowAttribute:UserFlowAttribute"
+            },
+            "azuread_user_license": {
+                "current": "azuread:index/userLicense:UserLicense",
+                "fields": {
+                    "disabled_plans": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -1106,6 +1144,33 @@
                     }
                 }
             },
+            "azuread_authentication_strength_policy": {
+                "current": "azuread:index/getAuthenticationStrengthPolicy:getAuthenticationStrengthPolicy",
+                "fields": {
+                    "allowed_combinations": {
+                        "maxItemsOne": false
+                    },
+                    "combination_configurations": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "allowed_aaguids": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_issuer_skis": {
+                                    "maxItemsOne": false
+                                },
+                                "allowed_policy_oids": {
+                                    "maxItemsOne": false
+                                },
+                                "applies_to_combinations": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "azuread_client_config": {
                 "current": "azuread:index/getClientConfig:getClientConfig"
             },
@@ -1188,6 +1253,9 @@
                 "current": "azuread:index/getGroups:getGroups",
                 "fields": {
                     "display_names": {
+                        "maxItemsOne": false
+                    },
+                    "groups": {
                         "maxItemsOne": false
                     },
                     "object_ids": {

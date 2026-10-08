@@ -120,7 +120,7 @@ def get_group_role_management_policy(group_id: Optional[_builtins.str] = None,
 
 
     :param _builtins.str group_id: The ID of the Azure AD group for which the policy applies.
-    :param _builtins.str role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+    :param _builtins.str role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
     """
     __args__ = dict()
     __args__['groupId'] = group_id
@@ -163,7 +163,7 @@ def get_group_role_management_policy_output(group_id: pulumi.Input[Optional[_bui
 
 
     :param _builtins.str group_id: The ID of the Azure AD group for which the policy applies.
-    :param _builtins.str role_id: The type of assignment this policy coveres. Can be either `member` or `owner`.
+    :param _builtins.str role_id: The type of assignment this policy covers. Can be either `member` or `owner`.
     """
     __args__ = dict()
     __args__['groupId'] = group_id

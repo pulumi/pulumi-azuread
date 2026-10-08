@@ -538,7 +538,7 @@ export interface ConditionalAccessPolicyConditions {
      */
     insiderRiskLevels: string;
     /**
-     * A `locations` block as documented below, which specifies locations included in and excluded from the policy.
+     * A `locations` block as documented below, which specifies locations included in and excluded from the policy. In the Microsoft Entra admin center this condition was renamed from **Location** to **Network**; this is a portal label change only and the underlying API is unchanged. See [Conditional Access Policy: Using Network Signals](https://learn.microsoft.com/en-us/entra/identity/conditional-access/concept-assignment-network) for more information.
      */
     locations?: outputs.ConditionalAccessPolicyConditionsLocations;
     /**
@@ -675,7 +675,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     excludedGuestsOrExternalUsers?: outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser[];
     /**
-     * A list of role IDs excluded from scope of policy.
+     * A list of role template IDs excluded from scope of policy.
      */
     excludedRoles?: string[];
     /**
@@ -691,7 +691,7 @@ export interface ConditionalAccessPolicyConditionsUsers {
      */
     includedGuestsOrExternalUsers?: outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser[];
     /**
-     * A list of role IDs in scope of policy unless explicitly excluded.
+     * A list of role template IDs in scope of policy unless explicitly excluded.
      */
     includedRoles?: string[];
     /**
@@ -1053,6 +1053,37 @@ export interface GetApplicationWebImplicitGrant {
     idTokenIssuanceEnabled: boolean;
 }
 
+export interface GetAuthenticationStrengthPolicyCombinationConfiguration {
+    /**
+     * A list of AAGUIDs allowed by this combination configuration. Only populated when `type` is `fido2CombinationConfiguration`.
+     */
+    allowedAaguids: string[];
+    /**
+     * A list of allowed certificate issuer subject key identifier values. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+     */
+    allowedIssuerSkis: string[];
+    /**
+     * A list of allowed certificate policy OIDs. Only populated when `type` is `x509CertificateCombinationConfiguration`.
+     */
+    allowedPolicyOids: string[];
+    /**
+     * A list of authentication method combinations this configuration applies to, for example `fido2` or `x509CertificateSingleFactor`. This is distinct from `type`, which identifies the kind of combination configuration.
+     */
+    appliesToCombinations: string[];
+    /**
+     * The object ID of the authentication strength policy.
+     *
+     * > One of `displayName` or `objectId` must be specified.
+     *
+     * > **Tip** Display names are expected to be unique within a tenant, however this is not guaranteed by the API. Specify `objectId` where you need to be certain of matching a specific policy.
+     */
+    objectId: string;
+    /**
+     * The type of this combination configuration, either `fido2CombinationConfiguration` or `x509CertificateCombinationConfiguration`.
+     */
+    type: string;
+}
+
 export interface GetDirectoryRoleTemplatesRoleTemplate {
     /**
      * The description of the directory role template.
@@ -1131,6 +1162,27 @@ export interface GetGroupDynamicMembership {
      * The rule that determines membership of this group.
      */
     rule: string;
+}
+
+export interface GetGroupsGroup {
+    /**
+     * The display name of the group.
+     */
+    displayName: string;
+    /**
+     * Whether the returned groups should be mail-enabled. By itself this does not exclude security-enabled groups. Setting this to `true` ensures all groups are mail-enabled, and setting to `false` ensures that all groups are _not_ mail-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     */
+    mailEnabled: boolean;
+    /**
+     * The object ID of the group.
+     */
+    objectId: string;
+    /**
+     * Whether the returned groups should be security-enabled. By itself this does not exclude mail-enabled groups. Setting this to `true` ensures all groups are security-enabled, and setting to `false` ensures that all groups are _not_ security-enabled. To ignore this filter, omit the property or set it to null. Cannot be specified together with `objectIds`.
+     *
+     * > One of `displayNames`, `displayNamePrefix`, `objectIds` or `returnAll` should be specified. Either `displayName` or `objectIds` _may_ be specified as an empty list, in which case no results will be returned.
+     */
+    securityEnabled: boolean;
 }
 
 export interface GetNamedLocationCountry {
@@ -1384,7 +1436,7 @@ export interface GroupRoleManagementPolicyActivationRules {
      */
     requireMultifactorAuthentication: boolean;
     /**
-     * Is ticket information requrired during activation of the role.
+     * Is ticket information required during activation of the role.
      */
     requireTicketInfo: boolean;
     /**
@@ -1451,7 +1503,7 @@ export interface GroupRoleManagementPolicyEligibleAssignmentRules {
 
 export interface GroupRoleManagementPolicyNotificationRules {
     /**
-     * A `notificationTarget` block as defined below to configure notfications on active role assignments.
+     * A `notificationTarget` block as defined below to configure notifications on active role assignments.
      */
     activeAssignments: outputs.GroupRoleManagementPolicyNotificationRulesActiveAssignments;
     /**

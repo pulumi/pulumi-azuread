@@ -88,7 +88,7 @@ type PrivilegedAccessGroupEligibilitySchedule struct {
 	GroupId pulumi.StringOutput `pulumi:"groupId"`
 	// The justification for this assignment. May be required by the role policy.
 	Justification pulumi.StringPtrOutput `pulumi:"justification"`
-	// Is this assigment permanently valid.
+	// Is this assignment permanently valid.
 	//
 	// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 	PermanentAssignment pulumi.BoolOutput `pulumi:"permanentAssignment"`
@@ -153,7 +153,7 @@ type privilegedAccessGroupEligibilityScheduleState struct {
 	GroupId *string `pulumi:"groupId"`
 	// The justification for this assignment. May be required by the role policy.
 	Justification *string `pulumi:"justification"`
-	// Is this assigment permanently valid.
+	// Is this assignment permanently valid.
 	//
 	// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 	PermanentAssignment *bool `pulumi:"permanentAssignment"`
@@ -180,7 +180,7 @@ type PrivilegedAccessGroupEligibilityScheduleState struct {
 	GroupId pulumi.StringPtrInput
 	// The justification for this assignment. May be required by the role policy.
 	Justification pulumi.StringPtrInput
-	// Is this assigment permanently valid.
+	// Is this assignment permanently valid.
 	//
 	// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 	PermanentAssignment pulumi.BoolPtrInput
@@ -211,7 +211,7 @@ type privilegedAccessGroupEligibilityScheduleArgs struct {
 	GroupId string `pulumi:"groupId"`
 	// The justification for this assignment. May be required by the role policy.
 	Justification *string `pulumi:"justification"`
-	// Is this assigment permanently valid.
+	// Is this assignment permanently valid.
 	//
 	// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 	PermanentAssignment *bool `pulumi:"permanentAssignment"`
@@ -237,7 +237,7 @@ type PrivilegedAccessGroupEligibilityScheduleArgs struct {
 	GroupId pulumi.StringInput
 	// The justification for this assignment. May be required by the role policy.
 	Justification pulumi.StringPtrInput
-	// Is this assigment permanently valid.
+	// Is this assignment permanently valid.
 	//
 	// At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 	PermanentAssignment pulumi.BoolPtrInput
@@ -363,7 +363,7 @@ func (o PrivilegedAccessGroupEligibilityScheduleOutput) Justification() pulumi.S
 	return o.ApplyT(func(v *PrivilegedAccessGroupEligibilitySchedule) pulumi.StringPtrOutput { return v.Justification }).(pulumi.StringPtrOutput)
 }
 
-// Is this assigment permanently valid.
+// Is this assignment permanently valid.
 //
 // At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
 func (o PrivilegedAccessGroupEligibilityScheduleOutput) PermanentAssignment() pulumi.BoolOutput {

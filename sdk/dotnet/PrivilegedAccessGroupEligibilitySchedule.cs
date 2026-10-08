@@ -98,7 +98,7 @@ namespace Pulumi.AzureAD
         public Output<string?> Justification { get; private set; } = null!;
 
         /// <summary>
-        /// Is this assigment permanently valid.
+        /// Is this assignment permanently valid.
         /// 
         /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>
@@ -212,7 +212,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Justification { get; set; }
 
         /// <summary>
-        /// Is this assigment permanently valid.
+        /// Is this assignment permanently valid.
         /// 
         /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>
@@ -282,7 +282,7 @@ namespace Pulumi.AzureAD
         public Input<string>? Justification { get; set; }
 
         /// <summary>
-        /// Is this assigment permanently valid.
+        /// Is this assignment permanently valid.
         /// 
         /// At least one of `ExpirationDate`, `Duration`, or `PermanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
         /// </summary>

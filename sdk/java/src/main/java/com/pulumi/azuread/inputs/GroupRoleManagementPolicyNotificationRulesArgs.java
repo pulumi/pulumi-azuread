@@ -18,14 +18,14 @@ public final class GroupRoleManagementPolicyNotificationRulesArgs extends com.pu
     public static final GroupRoleManagementPolicyNotificationRulesArgs Empty = new GroupRoleManagementPolicyNotificationRulesArgs();
 
     /**
-     * A `notificationTarget` block as defined below to configure notfications on active role assignments.
+     * A `notificationTarget` block as defined below to configure notifications on active role assignments.
      * 
      */
     @Import(name="activeAssignments")
     private @Nullable Output<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs> activeAssignments;
 
     /**
-     * @return A `notificationTarget` block as defined below to configure notfications on active role assignments.
+     * @return A `notificationTarget` block as defined below to configure notifications on active role assignments.
      * 
      */
     public Optional<Output<GroupRoleManagementPolicyNotificationRulesActiveAssignmentsArgs>> activeAssignments() {
@@ -93,7 +93,7 @@ public final class GroupRoleManagementPolicyNotificationRulesArgs extends com.pu
         }
 
         /**
-         * @param activeAssignments A `notificationTarget` block as defined below to configure notfications on active role assignments.
+         * @param activeAssignments A `notificationTarget` block as defined below to configure notifications on active role assignments.
          * 
          * @return builder
          * 
@@ -104,7 +104,7 @@ public final class GroupRoleManagementPolicyNotificationRulesArgs extends com.pu
         }
 
         /**
-         * @param activeAssignments A `notificationTarget` block as defined below to configure notfications on active role assignments.
+         * @param activeAssignments A `notificationTarget` block as defined below to configure notifications on active role assignments.
          * 
          * @return builder
          * 

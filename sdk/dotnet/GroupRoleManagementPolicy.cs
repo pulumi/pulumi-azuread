@@ -127,7 +127,7 @@ namespace Pulumi.AzureAD
         public Output<Outputs.GroupRoleManagementPolicyNotificationRules> NotificationRules { get; private set; } = null!;
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
+        /// The type of assignment this policy covers. Can be either `Member` or `Owner`.
         /// </summary>
         [Output("roleId")]
         public Output<string> RoleId { get; private set; } = null!;
@@ -209,7 +209,7 @@ namespace Pulumi.AzureAD
         public Input<Inputs.GroupRoleManagementPolicyNotificationRulesArgs>? NotificationRules { get; set; }
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
+        /// The type of assignment this policy covers. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId", required: true)]
         public Input<string> RoleId { get; set; } = null!;
@@ -265,7 +265,7 @@ namespace Pulumi.AzureAD
         public Input<Inputs.GroupRoleManagementPolicyNotificationRulesGetArgs>? NotificationRules { get; set; }
 
         /// <summary>
-        /// The type of assignment this policy coveres. Can be either `Member` or `Owner`.
+        /// The type of assignment this policy covers. Can be either `Member` or `Owner`.
         /// </summary>
         [Input("roleId")]
         public Input<string>? RoleId { get; set; }
