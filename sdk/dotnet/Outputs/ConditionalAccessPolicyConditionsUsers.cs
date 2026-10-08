@@ -22,7 +22,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersExcludedGuestsOrExternalUser> ExcludedGuestsOrExternalUsers;
         /// <summary>
-        /// A list of role IDs excluded from scope of policy.
+        /// A list of role template IDs excluded from scope of policy.
         /// </summary>
         public readonly ImmutableArray<string> ExcludedRoles;
         /// <summary>
@@ -38,7 +38,7 @@ namespace Pulumi.AzureAD.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.ConditionalAccessPolicyConditionsUsersIncludedGuestsOrExternalUser> IncludedGuestsOrExternalUsers;
         /// <summary>
-        /// A list of role IDs in scope of policy unless explicitly excluded.
+        /// A list of role template IDs in scope of policy unless explicitly excluded.
         /// </summary>
         public readonly ImmutableArray<string> IncludedRoles;
         /// <summary>

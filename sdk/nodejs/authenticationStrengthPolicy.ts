@@ -106,6 +106,10 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
      * The friendly name for this authentication strength policy.
      */
     declare public readonly displayName: pulumi.Output<string>;
+    /**
+     * The object ID of the authentication strength policy.
+     */
+    declare public /*out*/ readonly objectId: pulumi.Output<string>;
 
     /**
      * Create a AuthenticationStrengthPolicy resource with the given unique name, arguments, and options.
@@ -123,6 +127,7 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
             resourceInputs["allowedCombinations"] = state?.allowedCombinations;
             resourceInputs["description"] = state?.description;
             resourceInputs["displayName"] = state?.displayName;
+            resourceInputs["objectId"] = state?.objectId;
         } else {
             const args = argsOrState as AuthenticationStrengthPolicyArgs | undefined;
             if (args?.allowedCombinations === undefined && !opts.urn) {
@@ -134,6 +139,7 @@ export class AuthenticationStrengthPolicy extends pulumi.CustomResource {
             resourceInputs["allowedCombinations"] = args?.allowedCombinations;
             resourceInputs["description"] = args?.description;
             resourceInputs["displayName"] = args?.displayName;
+            resourceInputs["objectId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AuthenticationStrengthPolicy.__pulumiType, name, resourceInputs, opts);
@@ -156,6 +162,10 @@ export interface AuthenticationStrengthPolicyState {
      * The friendly name for this authentication strength policy.
      */
     displayName?: pulumi.Input<string | undefined>;
+    /**
+     * The object ID of the authentication strength policy.
+     */
+    objectId?: pulumi.Input<string | undefined>;
 }
 
 /**

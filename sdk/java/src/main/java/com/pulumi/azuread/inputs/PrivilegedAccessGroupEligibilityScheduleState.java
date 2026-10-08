@@ -92,7 +92,7 @@ public final class PrivilegedAccessGroupEligibilityScheduleState extends com.pul
     }
 
     /**
-     * Is this assigment permanently valid.
+     * Is this assignment permanently valid.
      * 
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
@@ -101,7 +101,7 @@ public final class PrivilegedAccessGroupEligibilityScheduleState extends com.pul
     private @Nullable Output<Boolean> permanentAssignment;
 
     /**
-     * @return Is this assigment permanently valid.
+     * @return Is this assignment permanently valid.
      * 
      * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
      * 
@@ -325,7 +325,7 @@ public final class PrivilegedAccessGroupEligibilityScheduleState extends com.pul
         }
 
         /**
-         * @param permanentAssignment Is this assigment permanently valid.
+         * @param permanentAssignment Is this assignment permanently valid.
          * 
          * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
          * 
@@ -338,7 +338,7 @@ public final class PrivilegedAccessGroupEligibilityScheduleState extends com.pul
         }
 
         /**
-         * @param permanentAssignment Is this assigment permanently valid.
+         * @param permanentAssignment Is this assignment permanently valid.
          * 
          * At least one of `expirationDate`, `duration`, or `permanentAssignment` must be supplied. The role policy may limit the maximum duration which can be supplied.
          * 
