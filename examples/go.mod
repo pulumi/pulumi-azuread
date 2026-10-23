@@ -3,7 +3,7 @@ module github.com/pulumi/pulumi-azuread/examples/v6
 go 1.26.6
 
 require (
-	github.com/pulumi/pulumi/pkg/v3 v3.270.0
+	github.com/pulumi/pulumi/pkg/v3 v3.272.0
 	github.com/stretchr/testify v1.12.1
 )
 
@@ -154,7 +154,7 @@ require (
 	github.com/pulumi/appdash v0.0.0-20231130102222-75f619a67231 // indirect
 	github.com/pulumi/inflector v0.2.1 // indirect
 	github.com/pulumi/pulumi-cloud-sdk/go v1.20261021.0 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.270.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.272.0 // indirect
 	github.com/rivo/uniseg v0.4.7 // indirect
 	github.com/rogpeppe/go-internal v1.14.1 // indirect
 	github.com/ryanuber/go-glob v1.0.0 // indirect
@@ -215,8 +215,8 @@ require (
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/api v0.290.0 // indirect
 	google.golang.org/genproto v0.0.0-20260724162435-b2f20204f0df // indirect
-	google.golang.org/genproto/googleapis/api v0.0.0-20261012220534-4341edf3f941 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20261012220534-4341edf3f941 // indirect
+	google.golang.org/genproto/googleapis/api v0.0.0-20261019180522-ce908d29299b // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20261019180522-ce908d29299b // indirect
 	google.golang.org/grpc v1.84.0 // indirect
 	google.golang.org/protobuf v1.36.12 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
