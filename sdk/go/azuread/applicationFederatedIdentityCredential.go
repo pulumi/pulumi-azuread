@@ -45,7 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationFederatedIdentityCredential(ctx, "example", &azuread.ApplicationFederatedIdentityCredentialArgs{
-//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
+//				ApplicationId: example.ID(),
 //				DisplayName:   pulumi.String("my-repo-deploy"),
 //				Description:   pulumi.String("Deployments for my-repo"),
 //				Audiences: pulumi.StringArray{

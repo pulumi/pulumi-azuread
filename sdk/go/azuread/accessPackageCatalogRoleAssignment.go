@@ -58,7 +58,7 @@ import (
 //			_, err = azuread.NewAccessPackageCatalogRoleAssignment(ctx, "example", &azuread.AccessPackageCatalogRoleAssignmentArgs{
 //				RoleId:            pulumi.String(exampleGetAccessPackageCatalogRole.ObjectId),
 //				PrincipalObjectId: pulumi.String(example.ObjectId),
-//				CatalogId:         exampleAccessPackageCatalog.ID().ToIDOutput().ToStringOutput(),
+//				CatalogId:         exampleAccessPackageCatalog.ID(),
 //			})
 //			if err != nil {
 //				return err

@@ -43,7 +43,7 @@ import (
 //				return err
 //			}
 //			_ = azuread.GetGroupRoleManagementPolicyOutput(ctx, azuread.GetGroupRoleManagementPolicyOutputArgs{
-//				GroupId: example.ID().ToIDOutput().ToStringOutput(),
+//				GroupId: example.ID(),
 //				RoleId:  pulumi.String("owner"),
 //			}, nil)
 //			return nil

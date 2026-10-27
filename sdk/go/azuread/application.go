@@ -225,9 +225,9 @@ import (
 // },
 // Password: &azuread.ApplicationPasswordTypeArgs{
 // DisplayName: pulumi.String("MySecret-1"),
-// StartDate: example.ID().ToIDOutput().ToStringOutput(),
+// StartDate: example.ID(),
 // EndDate: std.TimeaddOutput(ctx, std.TimeaddOutputArgs{
-// Duration: example.ID().ToIDOutput().ToStringOutput(),
+// Duration: example.ID(),
 // Timestamp: pulumi.String("4320h"),
 // }, nil).Result(),
 // },

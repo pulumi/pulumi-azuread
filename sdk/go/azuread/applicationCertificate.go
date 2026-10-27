@@ -54,7 +54,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
+//				ApplicationId: example.ID(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Value:         pulumi.String(invokeFile.Result),
 //				EndDate:       pulumi.String("2021-05-01T01:02:03Z"),
@@ -98,7 +98,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
+//				ApplicationId: example.ID(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("base64"),
 //				Value:         pulumi.String(invokeBase64encode.Result),
@@ -203,7 +203,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationCertificate(ctx, "example", &azuread.ApplicationCertificateArgs{
-//				ApplicationId: exampleApplication.ID().ToIDOutput().ToStringOutput(),
+//				ApplicationId: exampleApplication.ID(),
 //				Type:          pulumi.String("AsymmetricX509Cert"),
 //				Encoding:      pulumi.String("hex"),
 //				Value:         example.CertificateData,
