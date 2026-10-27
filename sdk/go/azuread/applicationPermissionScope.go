@@ -90,7 +90,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewApplicationPermissionScope(ctx, "example", &azuread.ApplicationPermissionScopeArgs{
-//				ApplicationId: example.ID().ToIDOutput().ToStringOutput(),
+//				ApplicationId: example.ID(),
 //			})
 //			if err != nil {
 //				return err

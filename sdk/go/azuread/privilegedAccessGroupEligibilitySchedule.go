@@ -54,7 +54,7 @@ import (
 //			}
 //			_, err = azuread.NewPrivilegedAccessGroupEligibilitySchedule(ctx, "example", &azuread.PrivilegedAccessGroupEligibilityScheduleArgs{
 //				GroupId:        pulumi.Any(pim.Id),
-//				PrincipalId:    member.ID().ToIDOutput().ToStringOutput(),
+//				PrincipalId:    member.ID(),
 //				AssignmentType: pulumi.String("member"),
 //				Duration:       pulumi.String("P30D"),
 //				Justification:  pulumi.String("as requested"),

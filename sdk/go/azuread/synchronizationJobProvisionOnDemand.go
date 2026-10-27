@@ -92,7 +92,7 @@ import (
 //			}
 //			_, err = azuread.NewSynchronizationJobProvisionOnDemand(ctx, "example", &azuread.SynchronizationJobProvisionOnDemandArgs{
 //				ServicePrincipalId:   exampleSynchronizationJob.ServicePrincipalId,
-//				SynchronizationJobId: exampleSynchronizationJob.ID().ToIDOutput().ToStringOutput(),
+//				SynchronizationJobId: exampleSynchronizationJob.ID(),
 //				Parameters: azuread.SynchronizationJobProvisionOnDemandParameterArray{
 //					&azuread.SynchronizationJobProvisionOnDemandParameterArgs{
 //						RuleId: pulumi.String(""),

@@ -53,7 +53,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -91,7 +91,7 @@ import (
 //				return err
 //			}
 //			_, err = azuread.NewServicePrincipalTokenSigningCertificate(ctx, "example", &azuread.ServicePrincipalTokenSigningCertificateArgs{
-//				ServicePrincipalId: exampleServicePrincipal.ID().ToIDOutput().ToStringOutput(),
+//				ServicePrincipalId: exampleServicePrincipal.ID(),
 //				DisplayName:        pulumi.String("CN=example.com"),
 //				EndDate:            pulumi.String("2023-05-01T01:02:03Z"),
 //			})
