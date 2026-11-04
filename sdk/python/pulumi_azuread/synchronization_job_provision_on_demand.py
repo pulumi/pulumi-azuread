@@ -379,6 +379,20 @@ class SynchronizationJobProvisionOnDemand(pulumi.CustomResource):
         __props__.__dict__["triggers"] = triggers
         return SynchronizationJobProvisionOnDemand(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            parameters: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobProvisionOnDemandParameterArgs', 'SynchronizationJobProvisionOnDemandParameterArgsDict', 'outputs.SynchronizationJobProvisionOnDemandParameter']]]]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            synchronization_job_id: pulumi.Input[Optional[_builtins.str]] = None,
+            triggers: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["parameters"] = parameters
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["synchronizationJobId"] = synchronization_job_id
+        __props__["triggers"] = triggers
+        return pulumi.runtime.exists_resource(None, 'azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def parameters(self) -> pulumi.Output[Sequence['outputs.SynchronizationJobProvisionOnDemandParameter']]:

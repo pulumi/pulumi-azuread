@@ -220,6 +220,12 @@ func (ServicePrincipalPasswordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalPasswordState)(nil)).Elem()
 }
 
+// ServicePrincipalPasswordExists checks whether an existing ServicePrincipalPassword resource with the given ID exists.
+func ServicePrincipalPasswordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalPasswordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipalPassword:ServicePrincipalPassword", id, state, "", opts...)
+}
+
 type servicePrincipalPasswordArgs struct {
 	// A display name for the password.
 	DisplayName *string `pulumi:"displayName"`

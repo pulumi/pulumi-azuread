@@ -469,6 +469,24 @@ class ApplicationAppRole(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ApplicationAppRole(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_member_types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedMemberTypes"] = allowed_member_types
+        __props__["applicationId"] = application_id
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["roleId"] = role_id
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationAppRole:ApplicationAppRole', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedMemberTypes")
     def allowed_member_types(self) -> pulumi.Output[Sequence[_builtins.str]]:

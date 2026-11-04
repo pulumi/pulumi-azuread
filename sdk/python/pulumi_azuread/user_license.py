@@ -341,6 +341,18 @@ class UserLicense(pulumi.CustomResource):
         __props__.__dict__["user_object_id"] = user_object_id
         return UserLicense(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            disabled_plans: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sku_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["disabledPlans"] = disabled_plans
+        __props__["skuId"] = sku_id
+        __props__["userObjectId"] = user_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/userLicense:UserLicense', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="disabledPlans")
     def disabled_plans(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

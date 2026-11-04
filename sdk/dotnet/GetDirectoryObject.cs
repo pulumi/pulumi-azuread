@@ -45,7 +45,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 
@@ -89,7 +89,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 
@@ -133,7 +133,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 

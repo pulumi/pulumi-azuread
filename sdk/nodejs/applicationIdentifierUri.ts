@@ -66,6 +66,17 @@ export class ApplicationIdentifierUri extends pulumi.CustomResource {
         return new ApplicationIdentifierUri(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ApplicationIdentifierUri resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ApplicationIdentifierUriState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'azuread:index/applicationIdentifierUri:ApplicationIdentifierUri';
 

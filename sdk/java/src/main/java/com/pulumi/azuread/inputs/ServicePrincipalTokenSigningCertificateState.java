@@ -110,14 +110,14 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
     }
 
     /**
-     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
      * 
      */
     public Optional<Output<String>> value() {
@@ -285,7 +285,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class ServicePrincipalTokenSigningCertificateState extends com.pulu
         }
 
         /**
-         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+         * @param value The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
          * 
          * @return builder
          * 

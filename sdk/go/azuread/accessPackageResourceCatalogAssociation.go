@@ -144,6 +144,12 @@ func (AccessPackageResourceCatalogAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPackageResourceCatalogAssociationState)(nil)).Elem()
 }
 
+// AccessPackageResourceCatalogAssociationExists checks whether an existing AccessPackageResourceCatalogAssociation resource with the given ID exists.
+func AccessPackageResourceCatalogAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPackageResourceCatalogAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/accessPackageResourceCatalogAssociation:AccessPackageResourceCatalogAssociation", id, state, "", opts...)
+}
+
 type accessPackageResourceCatalogAssociationArgs struct {
 	// The unique ID of the access package catalog. Changing this forces a new resource to be created.
 	CatalogId string `pulumi:"catalogId"`

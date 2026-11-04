@@ -67,11 +67,10 @@ public final class GetServicePrincipalResult {
     /**
      * @return A `features` block as described below.
      * 
-     * @deprecated
-     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+    @Deprecated
     private List<GetServicePrincipalFeature> features;
     /**
      * @return Home page or landing page of the associated application.
@@ -229,11 +228,10 @@ public final class GetServicePrincipalResult {
     /**
      * @return A `features` block as described below.
      * 
-     * @deprecated
-     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+    @Deprecated
     public List<GetServicePrincipalFeature> features() {
         return this.features;
     }

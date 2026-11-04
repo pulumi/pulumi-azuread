@@ -270,6 +270,12 @@ func (ServicePrincipalDelegatedPermissionGrantState) ElementType() reflect.Type 
 	return reflect.TypeOf((*servicePrincipalDelegatedPermissionGrantState)(nil)).Elem()
 }
 
+// ServicePrincipalDelegatedPermissionGrantExists checks whether an existing ServicePrincipalDelegatedPermissionGrant resource with the given ID exists.
+func ServicePrincipalDelegatedPermissionGrantExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalDelegatedPermissionGrantState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant", id, state, "", opts...)
+}
+
 type servicePrincipalDelegatedPermissionGrantArgs struct {
 	// A set of claim values for delegated permission scopes which should be included in access tokens for the resource.
 	ClaimValues []string `pulumi:"claimValues"`

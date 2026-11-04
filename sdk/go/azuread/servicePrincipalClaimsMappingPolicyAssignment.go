@@ -118,6 +118,12 @@ func (ServicePrincipalClaimsMappingPolicyAssignmentState) ElementType() reflect.
 	return reflect.TypeOf((*servicePrincipalClaimsMappingPolicyAssignmentState)(nil)).Elem()
 }
 
+// ServicePrincipalClaimsMappingPolicyAssignmentExists checks whether an existing ServicePrincipalClaimsMappingPolicyAssignment resource with the given ID exists.
+func ServicePrincipalClaimsMappingPolicyAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalClaimsMappingPolicyAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment", id, state, "", opts...)
+}
+
 type servicePrincipalClaimsMappingPolicyAssignmentArgs struct {
 	// The ID of the claims mapping policy to assign.
 	ClaimsMappingPolicyId string `pulumi:"claimsMappingPolicyId"`

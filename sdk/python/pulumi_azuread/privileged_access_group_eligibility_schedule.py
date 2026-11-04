@@ -607,6 +607,34 @@ class PrivilegedAccessGroupEligibilitySchedule(pulumi.CustomResource):
         __props__.__dict__["ticket_system"] = ticket_system
         return PrivilegedAccessGroupEligibilitySchedule(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            assignment_type: pulumi.Input[Optional[_builtins.str]] = None,
+            duration: pulumi.Input[Optional[_builtins.str]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            justification: pulumi.Input[Optional[_builtins.str]] = None,
+            permanent_assignment: pulumi.Input[Optional[_builtins.bool]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            status: pulumi.Input[Optional[_builtins.str]] = None,
+            ticket_number: pulumi.Input[Optional[_builtins.str]] = None,
+            ticket_system: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["assignmentType"] = assignment_type
+        __props__["duration"] = duration
+        __props__["expirationDate"] = expiration_date
+        __props__["groupId"] = group_id
+        __props__["justification"] = justification
+        __props__["permanentAssignment"] = permanent_assignment
+        __props__["principalId"] = principal_id
+        __props__["startDate"] = start_date
+        __props__["status"] = status
+        __props__["ticketNumber"] = ticket_number
+        __props__["ticketSystem"] = ticket_system
+        return pulumi.runtime.exists_resource(None, 'azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="assignmentType")
     def assignment_type(self) -> pulumi.Output[_builtins.str]:

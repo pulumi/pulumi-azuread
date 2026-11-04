@@ -465,6 +465,20 @@ class ServicePrincipalDelegatedPermissionGrant(pulumi.CustomResource):
         __props__.__dict__["user_object_id"] = user_object_id
         return ServicePrincipalDelegatedPermissionGrant(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            claim_values: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            resource_service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["claimValues"] = claim_values
+        __props__["resourceServicePrincipalObjectId"] = resource_service_principal_object_id
+        __props__["servicePrincipalObjectId"] = service_principal_object_id
+        __props__["userObjectId"] = user_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/servicePrincipalDelegatedPermissionGrant:ServicePrincipalDelegatedPermissionGrant', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="claimValues")
     def claim_values(self) -> pulumi.Output[Sequence[_builtins.str]]:

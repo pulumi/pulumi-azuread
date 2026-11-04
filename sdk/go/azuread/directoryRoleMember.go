@@ -127,6 +127,12 @@ func (DirectoryRoleMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryRoleMemberState)(nil)).Elem()
 }
 
+// DirectoryRoleMemberExists checks whether an existing DirectoryRoleMember resource with the given ID exists.
+func DirectoryRoleMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryRoleMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/directoryRoleMember:DirectoryRoleMember", id, state, "", opts...)
+}
+
 type directoryRoleMemberArgs struct {
 	// The object ID of the principal you want to add as a member to the directory role. Supported object types are Users, Groups or Service Principals. Changing this forces a new resource to be created.
 	MemberObjectId *string `pulumi:"memberObjectId"`

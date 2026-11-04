@@ -154,6 +154,12 @@ func (NamedLocationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*namedLocationState)(nil)).Elem()
 }
 
+// NamedLocationExists checks whether an existing NamedLocation resource with the given ID exists.
+func NamedLocationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *NamedLocationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/namedLocation:NamedLocation", id, state, "", opts...)
+}
+
 type namedLocationArgs struct {
 	// A `country` block as documented below, which configures a country-based named location.
 	Country *NamedLocationCountry `pulumi:"country"`

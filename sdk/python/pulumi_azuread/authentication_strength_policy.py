@@ -359,6 +359,20 @@ class AuthenticationStrengthPolicy(pulumi.CustomResource):
         __props__.__dict__["object_id"] = object_id
         return AuthenticationStrengthPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_combinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedCombinations"] = allowed_combinations
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["objectId"] = object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedCombinations")
     def allowed_combinations(self) -> pulumi.Output[Sequence[_builtins.str]]:

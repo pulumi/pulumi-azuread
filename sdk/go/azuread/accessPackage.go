@@ -141,6 +141,12 @@ func (AccessPackageState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPackageState)(nil)).Elem()
 }
 
+// AccessPackageExists checks whether an existing AccessPackage resource with the given ID exists.
+func AccessPackageExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPackageState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/accessPackage:AccessPackage", id, state, "", opts...)
+}
+
 type accessPackageArgs struct {
 	// The ID of the Catalog this access package will be created in.
 	CatalogId string `pulumi:"catalogId"`

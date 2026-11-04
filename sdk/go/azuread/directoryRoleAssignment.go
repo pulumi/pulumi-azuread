@@ -253,6 +253,12 @@ func (DirectoryRoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryRoleAssignmentState)(nil)).Elem()
 }
 
+// DirectoryRoleAssignmentExists checks whether an existing DirectoryRoleAssignment resource with the given ID exists.
+func DirectoryRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/directoryRoleAssignment:DirectoryRoleAssignment", id, state, "", opts...)
+}
+
 type directoryRoleAssignmentArgs struct {
 	// Identifier of the app-specific scope when the assignment scope is app-specific. Cannot be used with `directoryScopeId`. See [official documentation](https://docs.microsoft.com/en-us/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0&tabs=http) for example usage. Changing this forces a new resource to be created.
 	AppScopeId *string `pulumi:"appScopeId"`

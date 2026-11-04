@@ -118,22 +118,20 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
     /**
      * Block of features to configure for this service principal using tags
      * 
-     * @deprecated
-     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+    @Deprecated
     @Import(name="features")
     private @Nullable Output<List<ServicePrincipalFeatureArgs>> features;
 
     /**
      * @return Block of features to configure for this service principal using tags
      * 
-     * @deprecated
-     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+    @Deprecated
     public Optional<Output<List<ServicePrincipalFeatureArgs>>> features() {
         return Optional.ofNullable(this.features);
     }
@@ -465,11 +463,10 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+         * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
          * 
          */
-        @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+        @Deprecated
         public Builder features(@Nullable Output<List<ServicePrincipalFeatureArgs>> features) {
             $.features = features;
             return this;
@@ -480,11 +477,10 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+         * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
          * 
          */
-        @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+        @Deprecated
         public Builder features(List<ServicePrincipalFeatureArgs> features) {
             return features(Output.of(features));
         }
@@ -494,11 +490,10 @@ public final class ServicePrincipalArgs extends com.pulumi.resources.ResourceArg
          * 
          * @return builder
          * 
-         * @deprecated
-         * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+         * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
          * 
          */
-        @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+        @Deprecated
         public Builder features(ServicePrincipalFeatureArgs... features) {
             return features(List.of(features));
         }

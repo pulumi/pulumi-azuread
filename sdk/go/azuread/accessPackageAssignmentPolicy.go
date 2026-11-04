@@ -224,6 +224,12 @@ func (AccessPackageAssignmentPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPackageAssignmentPolicyState)(nil)).Elem()
 }
 
+// AccessPackageAssignmentPolicyExists checks whether an existing AccessPackageAssignmentPolicy resource with the given ID exists.
+func AccessPackageAssignmentPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPackageAssignmentPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy", id, state, "", opts...)
+}
+
 type accessPackageAssignmentPolicyArgs struct {
 	// The ID of the access package that will contain the policy.
 	AccessPackageId string `pulumi:"accessPackageId"`

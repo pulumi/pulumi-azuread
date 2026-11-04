@@ -460,6 +460,24 @@ class AppRoleAssignment(pulumi.CustomResource):
         __props__.__dict__["resource_object_id"] = resource_object_id
         return AppRoleAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            app_role_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_type: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            resource_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["appRoleId"] = app_role_id
+        __props__["principalDisplayName"] = principal_display_name
+        __props__["principalObjectId"] = principal_object_id
+        __props__["principalType"] = principal_type
+        __props__["resourceDisplayName"] = resource_display_name
+        __props__["resourceObjectId"] = resource_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/appRoleAssignment:AppRoleAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="appRoleId")
     def app_role_id(self) -> pulumi.Output[_builtins.str]:

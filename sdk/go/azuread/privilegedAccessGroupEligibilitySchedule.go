@@ -200,6 +200,12 @@ func (PrivilegedAccessGroupEligibilityScheduleState) ElementType() reflect.Type 
 	return reflect.TypeOf((*privilegedAccessGroupEligibilityScheduleState)(nil)).Elem()
 }
 
+// PrivilegedAccessGroupEligibilityScheduleExists checks whether an existing PrivilegedAccessGroupEligibilitySchedule resource with the given ID exists.
+func PrivilegedAccessGroupEligibilityScheduleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *PrivilegedAccessGroupEligibilityScheduleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/privilegedAccessGroupEligibilitySchedule:PrivilegedAccessGroupEligibilitySchedule", id, state, "", opts...)
+}
+
 type privilegedAccessGroupEligibilityScheduleArgs struct {
 	// The type of assignment to the group. Can be either `member` or `owner`.
 	AssignmentType string `pulumi:"assignmentType"`

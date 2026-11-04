@@ -455,6 +455,26 @@ class Invitation(pulumi.CustomResource):
         __props__.__dict__["user_type"] = user_type
         return Invitation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            message: pulumi.Input[Optional[Union['InvitationMessageArgs', 'InvitationMessageArgsDict', 'outputs.InvitationMessage']]] = None,
+            redeem_url: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_url: pulumi.Input[Optional[_builtins.str]] = None,
+            user_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            user_email_address: pulumi.Input[Optional[_builtins.str]] = None,
+            user_id: pulumi.Input[Optional[_builtins.str]] = None,
+            user_type: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["message"] = message
+        __props__["redeemUrl"] = redeem_url
+        __props__["redirectUrl"] = redirect_url
+        __props__["userDisplayName"] = user_display_name
+        __props__["userEmailAddress"] = user_email_address
+        __props__["userId"] = user_id
+        __props__["userType"] = user_type
+        return pulumi.runtime.exists_resource(None, 'azuread:index/invitation:Invitation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def message(self) -> pulumi.Output[Optional['outputs.InvitationMessage']]:

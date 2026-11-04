@@ -545,6 +545,28 @@ class ApplicationPermissionScope(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ApplicationPermissionScope(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            admin_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+            admin_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            user_consent_description: pulumi.Input[Optional[_builtins.str]] = None,
+            user_consent_display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["adminConsentDescription"] = admin_consent_description
+        __props__["adminConsentDisplayName"] = admin_consent_display_name
+        __props__["applicationId"] = application_id
+        __props__["scopeId"] = scope_id
+        __props__["type"] = type
+        __props__["userConsentDescription"] = user_consent_description
+        __props__["userConsentDisplayName"] = user_consent_display_name
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationPermissionScope:ApplicationPermissionScope', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="adminConsentDescription")
     def admin_consent_description(self) -> pulumi.Output[_builtins.str]:

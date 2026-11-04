@@ -374,11 +374,10 @@ public class ServicePrincipal extends com.pulumi.resources.CustomResource {
     /**
      * Block of features to configure for this service principal using tags
      * 
-     * @deprecated
-     * This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
+     * @deprecated This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider
      * 
      */
-    @Deprecated /* This block has been renamed to `featureTags` and will be removed in version 3.0 of the provider */
+    @Deprecated
     @Export(name="features", refs={List.class,ServicePrincipalFeature.class}, tree="[0,1]")
     private Output<List<ServicePrincipalFeature>> features;
 

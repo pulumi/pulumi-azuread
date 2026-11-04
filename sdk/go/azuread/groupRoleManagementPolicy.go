@@ -184,6 +184,12 @@ func (GroupRoleManagementPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupRoleManagementPolicyState)(nil)).Elem()
 }
 
+// GroupRoleManagementPolicyExists checks whether an existing GroupRoleManagementPolicy resource with the given ID exists.
+func GroupRoleManagementPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupRoleManagementPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy", id, state, "", opts...)
+}
+
 type groupRoleManagementPolicyArgs struct {
 	// An `activationRules` block as defined below.
 	ActivationRules *GroupRoleManagementPolicyActivationRules `pulumi:"activationRules"`

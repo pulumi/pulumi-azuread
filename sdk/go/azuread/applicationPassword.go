@@ -208,6 +208,12 @@ func (ApplicationPasswordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationPasswordState)(nil)).Elem()
 }
 
+// ApplicationPasswordExists checks whether an existing ApplicationPassword resource with the given ID exists.
+func ApplicationPasswordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationPasswordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationPassword:ApplicationPassword", id, state, "", opts...)
+}
+
 type applicationPasswordArgs struct {
 	// The resource ID of the application for which this password should be created. Changing this field forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

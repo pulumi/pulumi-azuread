@@ -137,6 +137,12 @@ func (GroupMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupMemberState)(nil)).Elem()
 }
 
+// GroupMemberExists checks whether an existing GroupMember resource with the given ID exists.
+func GroupMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/groupMember:GroupMember", id, state, "", opts...)
+}
+
 type groupMemberArgs struct {
 	// The object ID of the group you want to add the member to. Changing this forces a new resource to be created.
 	GroupObjectId string `pulumi:"groupObjectId"`

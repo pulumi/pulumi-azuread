@@ -131,6 +131,12 @@ func (ApplicationFallbackPublicClientState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationFallbackPublicClientState)(nil)).Elem()
 }
 
+// ApplicationFallbackPublicClientExists checks whether an existing ApplicationFallbackPublicClient resource with the given ID exists.
+func ApplicationFallbackPublicClientExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationFallbackPublicClientState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationFallbackPublicClient:ApplicationFallbackPublicClient", id, state, "", opts...)
+}
+
 type applicationFallbackPublicClientArgs struct {
 	// The resource ID of the application registration. Changing this forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

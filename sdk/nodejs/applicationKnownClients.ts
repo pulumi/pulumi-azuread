@@ -55,6 +55,17 @@ export class ApplicationKnownClients extends pulumi.CustomResource {
         return new ApplicationKnownClients(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing ApplicationKnownClients resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: ApplicationKnownClientsState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("azuread:index/applicationKnownClients:ApplicationKnownClients", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'azuread:index/applicationKnownClients:ApplicationKnownClients';
 

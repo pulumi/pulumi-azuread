@@ -330,6 +330,24 @@ class ApplicationFromTemplate(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         return ApplicationFromTemplate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["applicationObjectId"] = application_object_id
+        __props__["displayName"] = display_name
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["servicePrincipalObjectId"] = service_principal_object_id
+        __props__["templateId"] = template_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationFromTemplate:ApplicationFromTemplate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

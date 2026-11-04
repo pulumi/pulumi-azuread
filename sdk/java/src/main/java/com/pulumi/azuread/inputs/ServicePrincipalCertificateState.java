@@ -54,11 +54,10 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
      * 
      * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      * 
-     * @deprecated
-     * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      * 
      */
-    @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
+    @Deprecated
     @Import(name="endDateRelative")
     private @Nullable Output<String> endDateRelative;
 
@@ -67,11 +66,10 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
      * 
      * &gt; One of `endDate` or `endDateRelative` must be set. The maximum duration is determined by Azure AD.
      * 
-     * @deprecated
-     * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
+     * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
      * 
      */
-    @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
+    @Deprecated
     public Optional<Output<String>> endDateRelative() {
         return Optional.ofNullable(this.endDateRelative);
     }
@@ -235,11 +233,10 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
+         * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
          * 
          */
-        @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
+        @Deprecated
         public Builder endDateRelative(@Nullable Output<String> endDateRelative) {
             $.endDateRelative = endDateRelative;
             return this;
@@ -252,11 +249,10 @@ public final class ServicePrincipalCertificateState extends com.pulumi.resources
          * 
          * @return builder
          * 
-         * @deprecated
-         * The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
+         * @deprecated The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property.
          * 
          */
-        @Deprecated /* The `endDateRelative` property is deprecated and will be removed in a future version of the AzureAD provider. Please instead use the Terraform `timeadd()` function to calculate a value for the `endDate` property. */
+        @Deprecated
         public Builder endDateRelative(String endDateRelative) {
             return endDateRelative(Output.of(endDateRelative));
         }

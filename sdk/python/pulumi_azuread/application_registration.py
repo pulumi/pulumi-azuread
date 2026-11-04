@@ -844,6 +844,50 @@ class ApplicationRegistration(pulumi.CustomResource):
         __props__.__dict__["terms_of_service_url"] = terms_of_service_url
         return ApplicationRegistration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            disabled_by_microsoft: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+            implicit_access_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            implicit_id_token_issuance_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+            publisher_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            requested_access_token_version: pulumi.Input[Optional[_builtins.int]] = None,
+            service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["clientId"] = client_id
+        __props__["description"] = description
+        __props__["disabledByMicrosoft"] = disabled_by_microsoft
+        __props__["displayName"] = display_name
+        __props__["groupMembershipClaims"] = group_membership_claims
+        __props__["homepageUrl"] = homepage_url
+        __props__["implicitAccessTokenIssuanceEnabled"] = implicit_access_token_issuance_enabled
+        __props__["implicitIdTokenIssuanceEnabled"] = implicit_id_token_issuance_enabled
+        __props__["logoutUrl"] = logout_url
+        __props__["marketingUrl"] = marketing_url
+        __props__["notes"] = notes
+        __props__["objectId"] = object_id
+        __props__["privacyStatementUrl"] = privacy_statement_url
+        __props__["publisherDomain"] = publisher_domain
+        __props__["requestedAccessTokenVersion"] = requested_access_token_version
+        __props__["serviceManagementReference"] = service_management_reference
+        __props__["signInAudience"] = sign_in_audience
+        __props__["supportUrl"] = support_url
+        __props__["termsOfServiceUrl"] = terms_of_service_url
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationRegistration:ApplicationRegistration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="clientId")
     def client_id(self) -> pulumi.Output[_builtins.str]:

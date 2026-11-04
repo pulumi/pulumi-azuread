@@ -164,6 +164,12 @@ func (AuthenticationStrengthPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*authenticationStrengthPolicyState)(nil)).Elem()
 }
 
+// AuthenticationStrengthPolicyExists checks whether an existing AuthenticationStrengthPolicy resource with the given ID exists.
+func AuthenticationStrengthPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticationStrengthPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/authenticationStrengthPolicy:AuthenticationStrengthPolicy", id, state, "", opts...)
+}
+
 type authenticationStrengthPolicyArgs struct {
 	// List of allowed authentication methods for this authentication strength policy.
 	AllowedCombinations []string `pulumi:"allowedCombinations"`

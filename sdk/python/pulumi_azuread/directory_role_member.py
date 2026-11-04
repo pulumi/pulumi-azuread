@@ -250,6 +250,16 @@ class DirectoryRoleMember(pulumi.CustomResource):
         __props__.__dict__["role_object_id"] = role_object_id
         return DirectoryRoleMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["memberObjectId"] = member_object_id
+        __props__["roleObjectId"] = role_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/directoryRoleMember:DirectoryRoleMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="memberObjectId")
     def member_object_id(self) -> pulumi.Output[Optional[_builtins.str]]:

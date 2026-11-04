@@ -440,6 +440,12 @@ func (GroupWithoutMembersState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupWithoutMembersState)(nil)).Elem()
 }
 
+// GroupWithoutMembersExists checks whether an existing GroupWithoutMembers resource with the given ID exists.
+func GroupWithoutMembersExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupWithoutMembersState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/groupWithoutMembers:GroupWithoutMembers", id, state, "", opts...)
+}
+
 type groupWithoutMembersArgs struct {
 	// The object IDs of administrative units in which the group is a member. If specified, new groups will be created in the scope of the first administrative unit and added to the others. If empty, new groups will be created at the tenant level.
 	//

@@ -173,6 +173,12 @@ func (ApplicationFederatedIdentityCredentialState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationFederatedIdentityCredentialState)(nil)).Elem()
 }
 
+// ApplicationFederatedIdentityCredentialExists checks whether an existing ApplicationFederatedIdentityCredential resource with the given ID exists.
+func ApplicationFederatedIdentityCredentialExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationFederatedIdentityCredentialState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationFederatedIdentityCredential:ApplicationFederatedIdentityCredential", id, state, "", opts...)
+}
+
 type applicationFederatedIdentityCredentialArgs struct {
 	// The resource ID of the application for which this federated identity credential should be created. Changing this field forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

@@ -136,6 +136,12 @@ func (SynchronizationSecretState) ElementType() reflect.Type {
 	return reflect.TypeOf((*synchronizationSecretState)(nil)).Elem()
 }
 
+// SynchronizationSecretExists checks whether an existing SynchronizationSecret resource with the given ID exists.
+func SynchronizationSecretExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SynchronizationSecretState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/synchronizationSecret:SynchronizationSecret", id, state, "", opts...)
+}
+
 type synchronizationSecretArgs struct {
 	// One or more `credential` blocks as documented below.
 	Credentials []SynchronizationSecretCredential `pulumi:"credentials"`

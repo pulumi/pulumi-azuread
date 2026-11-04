@@ -156,6 +156,12 @@ func (AccessPackageResourcePackageAssociationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPackageResourcePackageAssociationState)(nil)).Elem()
 }
 
+// AccessPackageResourcePackageAssociationExists checks whether an existing AccessPackageResourcePackageAssociation resource with the given ID exists.
+func AccessPackageResourcePackageAssociationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPackageResourcePackageAssociationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/accessPackageResourcePackageAssociation:AccessPackageResourcePackageAssociation", id, state, "", opts...)
+}
+
 type accessPackageResourcePackageAssociationArgs struct {
 	// The ID of access package this resource association is configured to. Changing this forces a new resource to be created.
 	AccessPackageId string `pulumi:"accessPackageId"`

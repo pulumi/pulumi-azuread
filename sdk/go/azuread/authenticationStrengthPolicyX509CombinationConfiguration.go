@@ -166,6 +166,12 @@ func (AuthenticationStrengthPolicyX509CombinationConfigurationState) ElementType
 	return reflect.TypeOf((*authenticationStrengthPolicyX509CombinationConfigurationState)(nil)).Elem()
 }
 
+// AuthenticationStrengthPolicyX509CombinationConfigurationExists checks whether an existing AuthenticationStrengthPolicyX509CombinationConfiguration resource with the given ID exists.
+func AuthenticationStrengthPolicyX509CombinationConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticationStrengthPolicyX509CombinationConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration", id, state, "", opts...)
+}
+
 type authenticationStrengthPolicyX509CombinationConfigurationArgs struct {
 	// A set of allowed certificate issuer subject key identifier (SKI) values. At least one of `allowedIssuerSkis` or `allowedPolicyOids` must be specified.
 	AllowedIssuerSkis []string `pulumi:"allowedIssuerSkis"`

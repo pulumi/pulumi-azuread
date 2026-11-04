@@ -156,6 +156,12 @@ func (DirectoryRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryRoleState)(nil)).Elem()
 }
 
+// DirectoryRoleExists checks whether an existing DirectoryRole resource with the given ID exists.
+func DirectoryRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/directoryRole:DirectoryRole", id, state, "", opts...)
+}
+
 type directoryRoleArgs struct {
 	// The display name of the directory role to activate. Changing this forces a new resource to be created.
 	DisplayName *string `pulumi:"displayName"`

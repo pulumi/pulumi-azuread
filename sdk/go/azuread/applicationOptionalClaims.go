@@ -165,6 +165,12 @@ func (ApplicationOptionalClaimsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationOptionalClaimsState)(nil)).Elem()
 }
 
+// ApplicationOptionalClaimsExists checks whether an existing ApplicationOptionalClaims resource with the given ID exists.
+func ApplicationOptionalClaimsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationOptionalClaimsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationOptionalClaims:ApplicationOptionalClaims", id, state, "", opts...)
+}
+
 type applicationOptionalClaimsArgs struct {
 	// One or more `accessToken` blocks as documented below.
 	AccessTokens []ApplicationOptionalClaimsAccessToken `pulumi:"accessTokens"`

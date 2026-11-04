@@ -678,6 +678,28 @@ class ApplicationCertificate(pulumi.CustomResource):
         __props__.__dict__["value"] = value
         return ApplicationCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            encoding: pulumi.Input[Optional[_builtins.str]] = None,
+            end_date: pulumi.Input[Optional[_builtins.str]] = None,
+            end_date_relative: pulumi.Input[Optional[_builtins.str]] = None,
+            key_id: pulumi.Input[Optional[_builtins.str]] = None,
+            start_date: pulumi.Input[Optional[_builtins.str]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            value: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["applicationId"] = application_id
+        __props__["encoding"] = encoding
+        __props__["endDate"] = end_date
+        __props__["endDateRelative"] = end_date_relative
+        __props__["keyId"] = key_id
+        __props__["startDate"] = start_date
+        __props__["type"] = type
+        __props__["value"] = value
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationCertificate:ApplicationCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="applicationId")
     def application_id(self) -> pulumi.Output[_builtins.str]:

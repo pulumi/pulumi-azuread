@@ -402,6 +402,24 @@ class AdministrativeUnit(pulumi.CustomResource):
         __props__.__dict__["prevent_duplicate_names"] = prevent_duplicate_names
         return AdministrativeUnit(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            hidden_membership_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            members: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["hiddenMembershipEnabled"] = hidden_membership_enabled
+        __props__["members"] = members
+        __props__["objectId"] = object_id
+        __props__["preventDuplicateNames"] = prevent_duplicate_names
+        return pulumi.runtime.exists_resource(None, 'azuread:index/administrativeUnit:AdministrativeUnit', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[_builtins.str]]:

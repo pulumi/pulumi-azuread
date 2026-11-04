@@ -136,6 +136,12 @@ func (UserFlowAttributeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userFlowAttributeState)(nil)).Elem()
 }
 
+// UserFlowAttributeExists checks whether an existing UserFlowAttribute resource with the given ID exists.
+func UserFlowAttributeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserFlowAttributeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/userFlowAttribute:UserFlowAttribute", id, state, "", opts...)
+}
+
 type userFlowAttributeArgs struct {
 	// The data type of the user flow attribute. Possible values are `boolean`, `dateTime`, `int64`, `string` or `stringCollection`. Changing this forces a new resource to be created.
 	DataType string `pulumi:"dataType"`

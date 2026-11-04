@@ -482,6 +482,28 @@ class GroupRoleManagementPolicy(pulumi.CustomResource):
         __props__.__dict__["role_id"] = role_id
         return GroupRoleManagementPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            activation_rules: pulumi.Input[Optional[Union['GroupRoleManagementPolicyActivationRulesArgs', 'GroupRoleManagementPolicyActivationRulesArgsDict', 'outputs.GroupRoleManagementPolicyActivationRules']]] = None,
+            active_assignment_rules: pulumi.Input[Optional[Union['GroupRoleManagementPolicyActiveAssignmentRulesArgs', 'GroupRoleManagementPolicyActiveAssignmentRulesArgsDict', 'outputs.GroupRoleManagementPolicyActiveAssignmentRules']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            eligible_assignment_rules: pulumi.Input[Optional[Union['GroupRoleManagementPolicyEligibleAssignmentRulesArgs', 'GroupRoleManagementPolicyEligibleAssignmentRulesArgsDict', 'outputs.GroupRoleManagementPolicyEligibleAssignmentRules']]] = None,
+            group_id: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_rules: pulumi.Input[Optional[Union['GroupRoleManagementPolicyNotificationRulesArgs', 'GroupRoleManagementPolicyNotificationRulesArgsDict', 'outputs.GroupRoleManagementPolicyNotificationRules']]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["activationRules"] = activation_rules
+        __props__["activeAssignmentRules"] = active_assignment_rules
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["eligibleAssignmentRules"] = eligible_assignment_rules
+        __props__["groupId"] = group_id
+        __props__["notificationRules"] = notification_rules
+        __props__["roleId"] = role_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/groupRoleManagementPolicy:GroupRoleManagementPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="activationRules")
     def activation_rules(self) -> pulumi.Output['outputs.GroupRoleManagementPolicyActivationRules']:

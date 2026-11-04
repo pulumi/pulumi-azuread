@@ -169,6 +169,12 @@ func (GroupLicenseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*groupLicenseState)(nil)).Elem()
 }
 
+// GroupLicenseExists checks whether an existing GroupLicense resource with the given ID exists.
+func GroupLicenseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *GroupLicenseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/groupLicense:GroupLicense", id, state, "", opts...)
+}
+
 type groupLicenseArgs struct {
 	// A set of unique identifiers (GUIDs) for the service plans to disable for this license. Changing this forces a new resource to be created.
 	DisabledPlans []string `pulumi:"disabledPlans"`

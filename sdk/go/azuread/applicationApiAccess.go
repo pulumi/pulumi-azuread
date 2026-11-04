@@ -197,6 +197,12 @@ func (ApplicationApiAccessState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationApiAccessState)(nil)).Elem()
 }
 
+// ApplicationApiAccessExists checks whether an existing ApplicationApiAccess resource with the given ID exists.
+func ApplicationApiAccessExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationApiAccessState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationApiAccess:ApplicationApiAccess", id, state, "", opts...)
+}
+
 type applicationApiAccessArgs struct {
 	// The client ID of the API to which access is being granted. Changing this forces a new resource to be created.
 	ApiClientId string `pulumi:"apiClientId"`

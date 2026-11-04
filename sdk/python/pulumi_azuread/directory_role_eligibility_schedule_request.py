@@ -332,6 +332,20 @@ class DirectoryRoleEligibilityScheduleRequest(pulumi.CustomResource):
         __props__.__dict__["role_definition_id"] = role_definition_id
         return DirectoryRoleEligibilityScheduleRequest(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            directory_scope_id: pulumi.Input[Optional[_builtins.str]] = None,
+            justification: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_definition_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["directoryScopeId"] = directory_scope_id
+        __props__["justification"] = justification
+        __props__["principalId"] = principal_id
+        __props__["roleDefinitionId"] = role_definition_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="directoryScopeId")
     def directory_scope_id(self) -> pulumi.Output[_builtins.str]:

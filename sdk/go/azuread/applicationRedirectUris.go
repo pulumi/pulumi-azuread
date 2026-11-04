@@ -168,6 +168,12 @@ func (ApplicationRedirectUrisState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationRedirectUrisState)(nil)).Elem()
 }
 
+// ApplicationRedirectUrisExists checks whether an existing ApplicationRedirectUris resource with the given ID exists.
+func ApplicationRedirectUrisExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationRedirectUrisState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationRedirectUris:ApplicationRedirectUris", id, state, "", opts...)
+}
+
 type applicationRedirectUrisArgs struct {
 	// The resource ID of the application registration. Changing this forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

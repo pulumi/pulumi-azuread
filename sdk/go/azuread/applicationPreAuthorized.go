@@ -169,6 +169,12 @@ func (ApplicationPreAuthorizedState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationPreAuthorizedState)(nil)).Elem()
 }
 
+// ApplicationPreAuthorizedExists checks whether an existing ApplicationPreAuthorized resource with the given ID exists.
+func ApplicationPreAuthorizedExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationPreAuthorizedState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationPreAuthorized:ApplicationPreAuthorized", id, state, "", opts...)
+}
+
 type applicationPreAuthorizedArgs struct {
 	// The resource ID of the application for which permissions are being authorized. Changing this field forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

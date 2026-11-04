@@ -341,6 +341,20 @@ class SynchronizationJob(pulumi.CustomResource):
         __props__.__dict__["template_id"] = template_id
         return SynchronizationJob(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            schedules: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationJobScheduleArgs', 'SynchronizationJobScheduleArgsDict', 'outputs.SynchronizationJobSchedule']]]]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["enabled"] = enabled
+        __props__["schedules"] = schedules
+        __props__["servicePrincipalId"] = service_principal_id
+        __props__["templateId"] = template_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/synchronizationJob:SynchronizationJob', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:
