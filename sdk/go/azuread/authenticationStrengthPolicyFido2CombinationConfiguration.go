@@ -139,6 +139,12 @@ func (AuthenticationStrengthPolicyFido2CombinationConfigurationState) ElementTyp
 	return reflect.TypeOf((*authenticationStrengthPolicyFido2CombinationConfigurationState)(nil)).Elem()
 }
 
+// AuthenticationStrengthPolicyFido2CombinationConfigurationExists checks whether an existing AuthenticationStrengthPolicyFido2CombinationConfiguration resource with the given ID exists.
+func AuthenticationStrengthPolicyFido2CombinationConfigurationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AuthenticationStrengthPolicyFido2CombinationConfigurationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration", id, state, "", opts...)
+}
+
 type authenticationStrengthPolicyFido2CombinationConfigurationArgs struct {
 	// A set of Authenticator Attestation GUIDs (AAGUIDs) allowed to satisfy the `fido2` combination.
 	AllowedAaguids []string `pulumi:"allowedAaguids"`

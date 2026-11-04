@@ -165,6 +165,12 @@ func (SynchronizationJobState) ElementType() reflect.Type {
 	return reflect.TypeOf((*synchronizationJobState)(nil)).Elem()
 }
 
+// SynchronizationJobExists checks whether an existing SynchronizationJob resource with the given ID exists.
+func SynchronizationJobExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SynchronizationJobState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/synchronizationJob:SynchronizationJob", id, state, "", opts...)
+}
+
 type synchronizationJobArgs struct {
 	// Whether the provisioning job is enabled. Default state is `true`.
 	Enabled *bool `pulumi:"enabled"`

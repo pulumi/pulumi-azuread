@@ -415,6 +415,12 @@ func (UserState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userState)(nil)).Elem()
 }
 
+// UserExists checks whether an existing User resource with the given ID exists.
+func UserExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/user:User", id, state, "", opts...)
+}
+
 type userArgs struct {
 	// Whether or not the account should be enabled.
 	AccountEnabled *bool `pulumi:"accountEnabled"`

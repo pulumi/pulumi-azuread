@@ -218,6 +218,12 @@ func (ApplicationAppRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationAppRoleState)(nil)).Elem()
 }
 
+// ApplicationAppRoleExists checks whether an existing ApplicationAppRole resource with the given ID exists.
+func ApplicationAppRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationAppRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationAppRole:ApplicationAppRole", id, state, "", opts...)
+}
+
 type applicationAppRoleArgs struct {
 	// A set of values to specify whether this app role definition can be assigned to users and groups by setting to `User`, or to other applications by setting to `Application`, or to both.
 	AllowedMemberTypes []string `pulumi:"allowedMemberTypes"`

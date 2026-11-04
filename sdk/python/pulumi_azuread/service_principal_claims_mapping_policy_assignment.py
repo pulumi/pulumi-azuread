@@ -240,6 +240,16 @@ class ServicePrincipalClaimsMappingPolicyAssignment(pulumi.CustomResource):
         __props__.__dict__["service_principal_id"] = service_principal_id
         return ServicePrincipalClaimsMappingPolicyAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            claims_mapping_policy_id: pulumi.Input[Optional[_builtins.str]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["claimsMappingPolicyId"] = claims_mapping_policy_id
+        __props__["servicePrincipalId"] = service_principal_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/servicePrincipalClaimsMappingPolicyAssignment:ServicePrincipalClaimsMappingPolicyAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="claimsMappingPolicyId")
     def claims_mapping_policy_id(self) -> pulumi.Output[_builtins.str]:

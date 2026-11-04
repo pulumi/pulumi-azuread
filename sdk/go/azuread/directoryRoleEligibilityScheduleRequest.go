@@ -152,6 +152,12 @@ func (DirectoryRoleEligibilityScheduleRequestState) ElementType() reflect.Type {
 	return reflect.TypeOf((*directoryRoleEligibilityScheduleRequestState)(nil)).Elem()
 }
 
+// DirectoryRoleEligibilityScheduleRequestExists checks whether an existing DirectoryRoleEligibilityScheduleRequest resource with the given ID exists.
+func DirectoryRoleEligibilityScheduleRequestExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DirectoryRoleEligibilityScheduleRequestState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/directoryRoleEligibilityScheduleRequest:DirectoryRoleEligibilityScheduleRequest", id, state, "", opts...)
+}
+
 type directoryRoleEligibilityScheduleRequestArgs struct {
 	// Identifier of the directory object representing the scope of the role eligibility. Changing this forces a new resource to be created.
 	DirectoryScopeId string `pulumi:"directoryScopeId"`

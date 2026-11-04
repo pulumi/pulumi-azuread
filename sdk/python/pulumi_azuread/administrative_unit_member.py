@@ -258,6 +258,16 @@ class AdministrativeUnitMember(pulumi.CustomResource):
         __props__.__dict__["member_object_id"] = member_object_id
         return AdministrativeUnitMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            administrative_unit_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["administrativeUnitObjectId"] = administrative_unit_object_id
+        __props__["memberObjectId"] = member_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/administrativeUnitMember:AdministrativeUnitMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="administrativeUnitObjectId")
     def administrative_unit_object_id(self) -> pulumi.Output[Optional[_builtins.str]]:

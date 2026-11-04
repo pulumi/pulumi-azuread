@@ -351,6 +351,12 @@ func (ApplicationCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationCertificateState)(nil)).Elem()
 }
 
+// ApplicationCertificateExists checks whether an existing ApplicationCertificate resource with the given ID exists.
+func ApplicationCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationCertificate:ApplicationCertificate", id, state, "", opts...)
+}
+
 type applicationCertificateArgs struct {
 	// The resource ID of the application for which this certificate should be created. Changing this field forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

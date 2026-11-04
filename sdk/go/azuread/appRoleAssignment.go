@@ -275,6 +275,12 @@ func (AppRoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*appRoleAssignmentState)(nil)).Elem()
 }
 
+// AppRoleAssignmentExists checks whether an existing AppRoleAssignment resource with the given ID exists.
+func AppRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AppRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/appRoleAssignment:AppRoleAssignment", id, state, "", opts...)
+}
+
 type appRoleAssignmentArgs struct {
 	// The ID of the app role to be assigned, or the default role ID `00000000-0000-0000-0000-000000000000`. Changing this forces a new resource to be created.
 	AppRoleId string `pulumi:"appRoleId"`

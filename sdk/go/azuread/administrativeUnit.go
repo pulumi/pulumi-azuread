@@ -152,6 +152,12 @@ func (AdministrativeUnitState) ElementType() reflect.Type {
 	return reflect.TypeOf((*administrativeUnitState)(nil)).Elem()
 }
 
+// AdministrativeUnitExists checks whether an existing AdministrativeUnit resource with the given ID exists.
+func AdministrativeUnitExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdministrativeUnitState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/administrativeUnit:AdministrativeUnit", id, state, "", opts...)
+}
+
 type administrativeUnitArgs struct {
 	// The description of the administrative unit.
 	Description *string `pulumi:"description"`

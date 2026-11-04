@@ -1196,6 +1196,70 @@ class ServicePrincipal(pulumi.CustomResource):
         __props__.__dict__["use_existing"] = use_existing
         return ServicePrincipal(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            alternative_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            app_role_assignment_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            app_role_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalAppRoleArgs', 'ServicePrincipalAppRoleArgsDict', 'outputs.ServicePrincipalAppRole']]]]] = None,
+            application_tenant_id: pulumi.Input[Optional[_builtins.str]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureTagArgs', 'ServicePrincipalFeatureTagArgsDict', 'outputs.ServicePrincipalFeatureTag']]]]] = None,
+            features: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalFeatureArgs', 'ServicePrincipalFeatureArgsDict', 'outputs.ServicePrincipalFeature']]]]] = None,
+            homepage_url: pulumi.Input[Optional[_builtins.str]] = None,
+            login_url: pulumi.Input[Optional[_builtins.str]] = None,
+            logout_url: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            notification_email_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            oauth2_permission_scope_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            oauth2_permission_scopes: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ServicePrincipalOauth2PermissionScopeArgs', 'ServicePrincipalOauth2PermissionScopeArgsDict', 'outputs.ServicePrincipalOauth2PermissionScope']]]]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_single_sign_on_mode: pulumi.Input[Optional[_builtins.str]] = None,
+            redirect_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            saml_metadata_url: pulumi.Input[Optional[_builtins.str]] = None,
+            saml_single_sign_on: pulumi.Input[Optional[Union['ServicePrincipalSamlSingleSignOnArgs', 'ServicePrincipalSamlSingleSignOnArgsDict', 'outputs.ServicePrincipalSamlSingleSignOn']]] = None,
+            service_principal_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            type: pulumi.Input[Optional[_builtins.str]] = None,
+            use_existing: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountEnabled"] = account_enabled
+        __props__["alternativeNames"] = alternative_names
+        __props__["appRoleAssignmentRequired"] = app_role_assignment_required
+        __props__["appRoleIds"] = app_role_ids
+        __props__["appRoles"] = app_roles
+        __props__["applicationTenantId"] = application_tenant_id
+        __props__["clientId"] = client_id
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["featureTags"] = feature_tags
+        __props__["features"] = features
+        __props__["homepageUrl"] = homepage_url
+        __props__["loginUrl"] = login_url
+        __props__["logoutUrl"] = logout_url
+        __props__["notes"] = notes
+        __props__["notificationEmailAddresses"] = notification_email_addresses
+        __props__["oauth2PermissionScopeIds"] = oauth2_permission_scope_ids
+        __props__["oauth2PermissionScopes"] = oauth2_permission_scopes
+        __props__["objectId"] = object_id
+        __props__["owners"] = owners
+        __props__["preferredSingleSignOnMode"] = preferred_single_sign_on_mode
+        __props__["redirectUris"] = redirect_uris
+        __props__["samlMetadataUrl"] = saml_metadata_url
+        __props__["samlSingleSignOn"] = saml_single_sign_on
+        __props__["servicePrincipalNames"] = service_principal_names
+        __props__["signInAudience"] = sign_in_audience
+        __props__["tags"] = tags
+        __props__["type"] = type
+        __props__["useExisting"] = use_existing
+        return pulumi.runtime.exists_resource(None, 'azuread:index/servicePrincipal:ServicePrincipal', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountEnabled")
     def account_enabled(self) -> pulumi.Output[Optional[_builtins.bool]]:

@@ -212,6 +212,12 @@ func (ServicePrincipalTokenSigningCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalTokenSigningCertificateState)(nil)).Elem()
 }
 
+// ServicePrincipalTokenSigningCertificateExists checks whether an existing ServicePrincipalTokenSigningCertificate resource with the given ID exists.
+func ServicePrincipalTokenSigningCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalTokenSigningCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipalTokenSigningCertificate:ServicePrincipalTokenSigningCertificate", id, state, "", opts...)
+}
+
 type servicePrincipalTokenSigningCertificateArgs struct {
 	// Specifies a friendly name for the certificate. Must start with `CN=`. Changing this field forces a new resource to be created.
 	//

@@ -257,6 +257,12 @@ func (ServicePrincipalCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalCertificateState)(nil)).Elem()
 }
 
+// ServicePrincipalCertificateExists checks whether an existing ServicePrincipalCertificate resource with the given ID exists.
+func ServicePrincipalCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipalCertificate:ServicePrincipalCertificate", id, state, "", opts...)
+}
+
 type servicePrincipalCertificateArgs struct {
 	// Specifies the encoding used for the supplied certificate data. Must be one of `pem`, `base64` or `hex`. Defaults to `pem`.
 	//

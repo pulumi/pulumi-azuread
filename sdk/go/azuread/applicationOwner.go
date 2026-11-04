@@ -138,6 +138,12 @@ func (ApplicationOwnerState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationOwnerState)(nil)).Elem()
 }
 
+// ApplicationOwnerExists checks whether an existing ApplicationOwner resource with the given ID exists.
+func ApplicationOwnerExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationOwnerState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationOwner:ApplicationOwner", id, state, "", opts...)
+}
+
 type applicationOwnerArgs struct {
 	// The resource ID of the application registration. Changing this forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

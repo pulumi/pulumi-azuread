@@ -198,12 +198,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         final var current = AzureadFunctions.getClientConfig(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference);
  * 
  *         var example = new Group("example", GroupArgs.builder()
@@ -213,12 +213,12 @@ import javax.annotation.Nullable;
  *             .types("DynamicMembership")
  *             .dynamicMembership(GroupDynamicMembershipArgs.builder()
  *                 .enabled(true)
- *                 .rule("user.department -eq \"Sales\"")
+ *                 .rule("user.department -eq }&#92;{@code "Sales}&#92;{@code "")
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

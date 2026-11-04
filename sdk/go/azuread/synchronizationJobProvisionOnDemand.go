@@ -194,6 +194,12 @@ func (SynchronizationJobProvisionOnDemandState) ElementType() reflect.Type {
 	return reflect.TypeOf((*synchronizationJobProvisionOnDemandState)(nil)).Elem()
 }
 
+// SynchronizationJobProvisionOnDemandExists checks whether an existing SynchronizationJobProvisionOnDemand resource with the given ID exists.
+func SynchronizationJobProvisionOnDemandExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *SynchronizationJobProvisionOnDemandState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/synchronizationJobProvisionOnDemand:SynchronizationJobProvisionOnDemand", id, state, "", opts...)
+}
+
 type synchronizationJobProvisionOnDemandArgs struct {
 	// One or more `parameter` blocks as documented below.
 	Parameters []SynchronizationJobProvisionOnDemandParameter `pulumi:"parameters"`

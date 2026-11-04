@@ -61,12 +61,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App {
- *     public static void main(String[] args) {
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
  *         Pulumi.run(App::stack);
- *     }
+ *     }}{@code
  * 
- *     public static void stack(Context ctx) {
+ *     public static void stack(Context ctx) }{{@code
  *         var example = new ConditionalAccessPolicy("example", ConditionalAccessPolicyArgs.builder()
  *             .displayName("example policy")
  *             .state("disabled")
@@ -81,7 +81,7 @@ import javax.annotation.Nullable;
  *                 .devices(ConditionalAccessPolicyConditionsDevicesArgs.builder()
  *                     .filter(ConditionalAccessPolicyConditionsDevicesFilterArgs.builder()
  *                         .mode("exclude")
- *                         .rule("device.operatingSystem eq \"Doors\"")
+ *                         .rule("device.operatingSystem eq }&#92;{@code "Doors}&#92;{@code "")
  *                         .build())
  *                     .build())
  *                 .locations(ConditionalAccessPolicyConditionsLocationsArgs.builder()
@@ -110,8 +110,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }
- * }
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * 

@@ -59,6 +59,17 @@ export class AuthenticationStrengthPolicyFido2CombinationConfiguration extends p
         return new AuthenticationStrengthPolicyFido2CombinationConfiguration(name, <any>state, { ...opts, id: id });
     }
 
+    /**
+     * Check whether an existing AuthenticationStrengthPolicyFido2CombinationConfiguration resource with the given ID exists.
+     *
+     * @param id The _unique_ provider ID of the resource to check.
+     * @param state Any extra arguments used during the lookup.
+     * @param opts Optional settings to control the behavior of the CustomResource.
+     */
+    public static exists(id: pulumi.Input<string>, state?: AuthenticationStrengthPolicyFido2CombinationConfigurationState, opts?: pulumi.CustomResourceOptions): pulumi.Output<boolean> {
+        return pulumi.runtime.existsResource("azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration", id, <any>state || {}, { ...opts }, undefined);
+    }
+
     /** @internal */
     public static readonly __pulumiType = 'azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration';
 

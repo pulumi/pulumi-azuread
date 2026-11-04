@@ -596,6 +596,24 @@ class ConditionalAccessPolicy(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         return ConditionalAccessPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            conditions: pulumi.Input[Optional[Union['ConditionalAccessPolicyConditionsArgs', 'ConditionalAccessPolicyConditionsArgsDict', 'outputs.ConditionalAccessPolicyConditions']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            grant_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicyGrantControlsArgs', 'ConditionalAccessPolicyGrantControlsArgsDict', 'outputs.ConditionalAccessPolicyGrantControls']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            session_controls: pulumi.Input[Optional[Union['ConditionalAccessPolicySessionControlsArgs', 'ConditionalAccessPolicySessionControlsArgsDict', 'outputs.ConditionalAccessPolicySessionControls']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["conditions"] = conditions
+        __props__["displayName"] = display_name
+        __props__["grantControls"] = grant_controls
+        __props__["objectId"] = object_id
+        __props__["sessionControls"] = session_controls
+        __props__["state"] = state
+        return pulumi.runtime.exists_resource(None, 'azuread:index/conditionalAccessPolicy:ConditionalAccessPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def conditions(self) -> pulumi.Output['outputs.ConditionalAccessPolicyConditions']:

@@ -378,6 +378,20 @@ class ApplicationApiAccess(pulumi.CustomResource):
         __props__.__dict__["scope_ids"] = scope_ids
         return ApplicationApiAccess(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api_client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            scope_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["apiClientId"] = api_client_id
+        __props__["applicationId"] = application_id
+        __props__["roleIds"] = role_ids
+        __props__["scopeIds"] = scope_ids
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationApiAccess:ApplicationApiAccess', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="apiClientId")
     def api_client_id(self) -> pulumi.Output[_builtins.str]:

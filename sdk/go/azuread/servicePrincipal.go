@@ -447,6 +447,12 @@ func (ServicePrincipalState) ElementType() reflect.Type {
 	return reflect.TypeOf((*servicePrincipalState)(nil)).Elem()
 }
 
+// ServicePrincipalExists checks whether an existing ServicePrincipal resource with the given ID exists.
+func ServicePrincipalExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ServicePrincipalState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/servicePrincipal:ServicePrincipal", id, state, "", opts...)
+}
+
 type servicePrincipalArgs struct {
 	// Whether or not the service principal account is enabled. Defaults to `true`.
 	AccountEnabled *bool `pulumi:"accountEnabled"`

@@ -177,6 +177,12 @@ func (UserLicenseState) ElementType() reflect.Type {
 	return reflect.TypeOf((*userLicenseState)(nil)).Elem()
 }
 
+// UserLicenseExists checks whether an existing UserLicense resource with the given ID exists.
+func UserLicenseExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *UserLicenseState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/userLicense:UserLicense", id, state, "", opts...)
+}
+
 type userLicenseArgs struct {
 	// A set of unique identifiers (GUIDs) for the service plans to disable for this license. Changing this forces a new resource to be created.
 	DisabledPlans []string `pulumi:"disabledPlans"`

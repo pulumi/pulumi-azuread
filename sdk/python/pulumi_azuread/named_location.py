@@ -346,6 +346,20 @@ class NamedLocation(pulumi.CustomResource):
         __props__.__dict__["object_id"] = object_id
         return NamedLocation(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            country: pulumi.Input[Optional[Union['NamedLocationCountryArgs', 'NamedLocationCountryArgsDict', 'outputs.NamedLocationCountry']]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            ip: pulumi.Input[Optional[Union['NamedLocationIpArgs', 'NamedLocationIpArgsDict', 'outputs.NamedLocationIp']]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["country"] = country
+        __props__["displayName"] = display_name
+        __props__["ip"] = ip
+        __props__["objectId"] = object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/namedLocation:NamedLocation', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def country(self) -> pulumi.Output[Optional['outputs.NamedLocationCountry']]:

@@ -629,6 +629,32 @@ class AccessPackageAssignmentPolicy(pulumi.CustomResource):
         __props__.__dict__["requestor_settings"] = requestor_settings
         return AccessPackageAssignmentPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_package_id: pulumi.Input[Optional[_builtins.str]] = None,
+            approval_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyApprovalSettingsArgs', 'AccessPackageAssignmentPolicyApprovalSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyApprovalSettings']]] = None,
+            assignment_review_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyAssignmentReviewSettingsArgs', 'AccessPackageAssignmentPolicyAssignmentReviewSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyAssignmentReviewSettings']]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            duration_in_days: pulumi.Input[Optional[_builtins.int]] = None,
+            expiration_date: pulumi.Input[Optional[_builtins.str]] = None,
+            extension_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            questions: pulumi.Input[Optional[Sequence[pulumi.Input[Union['AccessPackageAssignmentPolicyQuestionArgs', 'AccessPackageAssignmentPolicyQuestionArgsDict', 'outputs.AccessPackageAssignmentPolicyQuestion']]]]] = None,
+            requestor_settings: pulumi.Input[Optional[Union['AccessPackageAssignmentPolicyRequestorSettingsArgs', 'AccessPackageAssignmentPolicyRequestorSettingsArgsDict', 'outputs.AccessPackageAssignmentPolicyRequestorSettings']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessPackageId"] = access_package_id
+        __props__["approvalSettings"] = approval_settings
+        __props__["assignmentReviewSettings"] = assignment_review_settings
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["durationInDays"] = duration_in_days
+        __props__["expirationDate"] = expiration_date
+        __props__["extensionEnabled"] = extension_enabled
+        __props__["questions"] = questions
+        __props__["requestorSettings"] = requestor_settings
+        return pulumi.runtime.exists_resource(None, 'azuread:index/accessPackageAssignmentPolicy:AccessPackageAssignmentPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessPackageId")
     def access_package_id(self) -> pulumi.Output[_builtins.str]:

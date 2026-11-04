@@ -280,6 +280,16 @@ class ClaimsMappingPolicy(pulumi.CustomResource):
         __props__.__dict__["display_name"] = display_name
         return ClaimsMappingPolicy(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            definitions: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["definitions"] = definitions
+        __props__["displayName"] = display_name
+        return pulumi.runtime.exists_resource(None, 'azuread:index/claimsMappingPolicy:ClaimsMappingPolicy', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def definitions(self) -> pulumi.Output[Sequence[_builtins.str]]:

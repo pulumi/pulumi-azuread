@@ -358,6 +358,20 @@ class AuthenticationStrengthPolicyX509CombinationConfiguration(pulumi.CustomReso
         __props__.__dict__["authentication_strength_policy_id"] = authentication_strength_policy_id
         return AuthenticationStrengthPolicyX509CombinationConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_issuer_skis: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            allowed_policy_oids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            applies_to_combinations: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authentication_strength_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedIssuerSkis"] = allowed_issuer_skis
+        __props__["allowedPolicyOids"] = allowed_policy_oids
+        __props__["appliesToCombinations"] = applies_to_combinations
+        __props__["authenticationStrengthPolicyId"] = authentication_strength_policy_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/authenticationStrengthPolicyX509CombinationConfiguration:AuthenticationStrengthPolicyX509CombinationConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedIssuerSkis")
     def allowed_issuer_skis(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

@@ -223,14 +223,14 @@ public class ServicePrincipalTokenSigningCertificate extends com.pulumi.resource
         return this.thumbprint;
     }
     /**
-     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----\n` or the footer `\n-----END CERTIFICATE-----`.
+     * @return The certificate data, which is PEM encoded but does not include the header `-----BEGIN CERTIFICATE-----&#92;n` or the footer `&#92;n-----END CERTIFICATE-----`.
      * 
      */
     public Output<String> value() {

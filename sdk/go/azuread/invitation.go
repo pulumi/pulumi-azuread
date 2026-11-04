@@ -208,6 +208,12 @@ func (InvitationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*invitationState)(nil)).Elem()
 }
 
+// InvitationExists checks whether an existing Invitation resource with the given ID exists.
+func InvitationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *InvitationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/invitation:Invitation", id, state, "", opts...)
+}
+
 type invitationArgs struct {
 	// A `message` block as documented below, which configures the message being sent to the invited user. If this block is omitted, no message will be sent.
 	Message *InvitationMessage `pulumi:"message"`

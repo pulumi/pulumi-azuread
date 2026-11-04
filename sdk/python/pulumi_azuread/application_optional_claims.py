@@ -373,6 +373,20 @@ class ApplicationOptionalClaims(pulumi.CustomResource):
         __props__.__dict__["saml2_tokens"] = saml2_tokens
         return ApplicationOptionalClaims(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            access_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsAccessTokenArgs', 'ApplicationOptionalClaimsAccessTokenArgsDict', 'outputs.ApplicationOptionalClaimsAccessToken']]]]] = None,
+            application_id: pulumi.Input[Optional[_builtins.str]] = None,
+            id_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsIdTokenArgs', 'ApplicationOptionalClaimsIdTokenArgsDict', 'outputs.ApplicationOptionalClaimsIdToken']]]]] = None,
+            saml2_tokens: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationOptionalClaimsSaml2TokenArgs', 'ApplicationOptionalClaimsSaml2TokenArgsDict', 'outputs.ApplicationOptionalClaimsSaml2Token']]]]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accessTokens"] = access_tokens
+        __props__["applicationId"] = application_id
+        __props__["idTokens"] = id_tokens
+        __props__["saml2Tokens"] = saml2_tokens
+        return pulumi.runtime.exists_resource(None, 'azuread:index/applicationOptionalClaims:ApplicationOptionalClaims', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accessTokens")
     def access_tokens(self) -> pulumi.Output[Optional[Sequence['outputs.ApplicationOptionalClaimsAccessToken']]]:

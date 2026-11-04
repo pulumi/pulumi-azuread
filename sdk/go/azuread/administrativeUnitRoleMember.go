@@ -147,6 +147,12 @@ func (AdministrativeUnitRoleMemberState) ElementType() reflect.Type {
 	return reflect.TypeOf((*administrativeUnitRoleMemberState)(nil)).Elem()
 }
 
+// AdministrativeUnitRoleMemberExists checks whether an existing AdministrativeUnitRoleMember resource with the given ID exists.
+func AdministrativeUnitRoleMemberExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AdministrativeUnitRoleMemberState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/administrativeUnitRoleMember:AdministrativeUnitRoleMember", id, state, "", opts...)
+}
+
 type administrativeUnitRoleMemberArgs struct {
 	// The object ID of the administrative unit you want to add the member to. Changing this forces a new resource to be created.
 	AdministrativeUnitObjectId string `pulumi:"administrativeUnitObjectId"`

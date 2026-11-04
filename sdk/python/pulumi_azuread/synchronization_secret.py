@@ -261,6 +261,16 @@ class SynchronizationSecret(pulumi.CustomResource):
         __props__.__dict__["service_principal_id"] = service_principal_id
         return SynchronizationSecret(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            credentials: pulumi.Input[Optional[Sequence[pulumi.Input[Union['SynchronizationSecretCredentialArgs', 'SynchronizationSecretCredentialArgsDict', 'outputs.SynchronizationSecretCredential']]]]] = None,
+            service_principal_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["credentials"] = credentials
+        __props__["servicePrincipalId"] = service_principal_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/synchronizationSecret:SynchronizationSecret', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def credentials(self) -> pulumi.Output[Optional[Sequence['outputs.SynchronizationSecretCredential']]]:

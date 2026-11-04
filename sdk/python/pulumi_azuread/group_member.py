@@ -260,6 +260,16 @@ class GroupMember(pulumi.CustomResource):
         __props__.__dict__["member_object_id"] = member_object_id
         return GroupMember(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            group_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            member_object_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["groupObjectId"] = group_object_id
+        __props__["memberObjectId"] = member_object_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/groupMember:GroupMember', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="groupObjectId")
     def group_object_id(self) -> pulumi.Output[_builtins.str]:

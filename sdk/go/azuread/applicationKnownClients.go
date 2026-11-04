@@ -136,6 +136,12 @@ func (ApplicationKnownClientsState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationKnownClientsState)(nil)).Elem()
 }
 
+// ApplicationKnownClientsExists checks whether an existing ApplicationKnownClients resource with the given ID exists.
+func ApplicationKnownClientsExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationKnownClientsState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationKnownClients:ApplicationKnownClients", id, state, "", opts...)
+}
+
 type applicationKnownClientsArgs struct {
 	// The resource ID of the application registration. Changing this forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

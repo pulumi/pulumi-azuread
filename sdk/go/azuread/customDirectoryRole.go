@@ -172,6 +172,12 @@ func (CustomDirectoryRoleState) ElementType() reflect.Type {
 	return reflect.TypeOf((*customDirectoryRoleState)(nil)).Elem()
 }
 
+// CustomDirectoryRoleExists checks whether an existing CustomDirectoryRole resource with the given ID exists.
+func CustomDirectoryRoleExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *CustomDirectoryRoleState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/customDirectoryRole:CustomDirectoryRole", id, state, "", opts...)
+}
+
 type customDirectoryRoleArgs struct {
 	// The description of the custom directory role.
 	Description *string `pulumi:"description"`

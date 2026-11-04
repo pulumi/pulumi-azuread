@@ -270,6 +270,16 @@ class AuthenticationStrengthPolicyFido2CombinationConfiguration(pulumi.CustomRes
         __props__.__dict__["authentication_strength_policy_id"] = authentication_strength_policy_id
         return AuthenticationStrengthPolicyFido2CombinationConfiguration(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            allowed_aaguids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authentication_strength_policy_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["allowedAaguids"] = allowed_aaguids
+        __props__["authenticationStrengthPolicyId"] = authentication_strength_policy_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/authenticationStrengthPolicyFido2CombinationConfiguration:AuthenticationStrengthPolicyFido2CombinationConfiguration', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="allowedAaguids")
     def allowed_aaguids(self) -> pulumi.Output[Sequence[_builtins.str]]:

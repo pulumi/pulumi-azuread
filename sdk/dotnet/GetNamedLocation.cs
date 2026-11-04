@@ -40,7 +40,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 
@@ -49,14 +49,14 @@ namespace Pulumi.AzureAD
         /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * `ObjectId` - The object ID of the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Country` block exports the following:
         /// 
         /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
         /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Ip` block exports the following:
         /// 
@@ -95,7 +95,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 
@@ -104,14 +104,14 @@ namespace Pulumi.AzureAD
         /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * `ObjectId` - The object ID of the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Country` block exports the following:
         /// 
         /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
         /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Ip` block exports the following:
         /// 
@@ -150,7 +150,7 @@ namespace Pulumi.AzureAD
         /// });
         /// ```
         /// 
-        /// ## Attributes Reference 
+        /// ## Attributes Reference
         /// 
         /// The following attributes are exported:
         /// 
@@ -159,14 +159,14 @@ namespace Pulumi.AzureAD
         /// * `Ip` - An `Ip` block as documented below, which describes an IP-based named location.
         /// * `ObjectId` - The object ID of the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Country` block exports the following:
         /// 
         /// * `CountriesAndRegions` - List of countries and/or regions in two-letter format specified by ISO 3166-2.
         /// * `IncludeUnknownCountriesAndRegions` - Whether IP addresses that don't map to a country or region are included in the named location.
         /// 
-        /// ---
+        /// ***
         /// 
         /// `Ip` block exports the following:
         /// 

@@ -1370,6 +1370,72 @@ class GroupWithoutMembers(pulumi.CustomResource):
         __props__.__dict__["writeback_enabled"] = writeback_enabled
         return GroupWithoutMembers(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            administrative_unit_ids: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            assignable_to_role: pulumi.Input[Optional[_builtins.bool]] = None,
+            auto_subscribe_new_members: pulumi.Input[Optional[_builtins.bool]] = None,
+            behaviors: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            dynamic_membership: pulumi.Input[Optional[Union['GroupWithoutMembersDynamicMembershipArgs', 'GroupWithoutMembersDynamicMembershipArgsDict', 'outputs.GroupWithoutMembersDynamicMembership']]] = None,
+            external_senders_allowed: pulumi.Input[Optional[_builtins.bool]] = None,
+            hide_from_address_lists: pulumi.Input[Optional[_builtins.bool]] = None,
+            hide_from_outlook_clients: pulumi.Input[Optional[_builtins.bool]] = None,
+            mail: pulumi.Input[Optional[_builtins.str]] = None,
+            mail_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            mail_nickname: pulumi.Input[Optional[_builtins.str]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_domain_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_group_type: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_netbios_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_sam_account_name: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_security_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            onpremises_sync_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            preferred_language: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+            provisioning_options: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            proxy_addresses: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            security_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            theme: pulumi.Input[Optional[_builtins.str]] = None,
+            types: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            visibility: pulumi.Input[Optional[_builtins.str]] = None,
+            writeback_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["administrativeUnitIds"] = administrative_unit_ids
+        __props__["assignableToRole"] = assignable_to_role
+        __props__["autoSubscribeNewMembers"] = auto_subscribe_new_members
+        __props__["behaviors"] = behaviors
+        __props__["description"] = description
+        __props__["displayName"] = display_name
+        __props__["dynamicMembership"] = dynamic_membership
+        __props__["externalSendersAllowed"] = external_senders_allowed
+        __props__["hideFromAddressLists"] = hide_from_address_lists
+        __props__["hideFromOutlookClients"] = hide_from_outlook_clients
+        __props__["mail"] = mail
+        __props__["mailEnabled"] = mail_enabled
+        __props__["mailNickname"] = mail_nickname
+        __props__["objectId"] = object_id
+        __props__["onpremisesDomainName"] = onpremises_domain_name
+        __props__["onpremisesGroupType"] = onpremises_group_type
+        __props__["onpremisesNetbiosName"] = onpremises_netbios_name
+        __props__["onpremisesSamAccountName"] = onpremises_sam_account_name
+        __props__["onpremisesSecurityIdentifier"] = onpremises_security_identifier
+        __props__["onpremisesSyncEnabled"] = onpremises_sync_enabled
+        __props__["owners"] = owners
+        __props__["preferredLanguage"] = preferred_language
+        __props__["preventDuplicateNames"] = prevent_duplicate_names
+        __props__["provisioningOptions"] = provisioning_options
+        __props__["proxyAddresses"] = proxy_addresses
+        __props__["securityEnabled"] = security_enabled
+        __props__["theme"] = theme
+        __props__["types"] = types
+        __props__["visibility"] = visibility
+        __props__["writebackEnabled"] = writeback_enabled
+        return pulumi.runtime.exists_resource(None, 'azuread:index/groupWithoutMembers:GroupWithoutMembers', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="administrativeUnitIds")
     def administrative_unit_ids(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

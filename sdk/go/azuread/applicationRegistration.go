@@ -226,6 +226,12 @@ func (ApplicationRegistrationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationRegistrationState)(nil)).Elem()
 }
 
+// ApplicationRegistrationExists checks whether an existing ApplicationRegistration resource with the given ID exists.
+func ApplicationRegistrationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationRegistrationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationRegistration:ApplicationRegistration", id, state, "", opts...)
+}
+
 type applicationRegistrationArgs struct {
 	// A description of the application, as shown to end users.
 	Description *string `pulumi:"description"`

@@ -162,6 +162,12 @@ func (ApplicationIdentifierUriState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationIdentifierUriState)(nil)).Elem()
 }
 
+// ApplicationIdentifierUriExists checks whether an existing ApplicationIdentifierUri resource with the given ID exists.
+func ApplicationIdentifierUriExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationIdentifierUriState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationIdentifierUri:ApplicationIdentifierUri", id, state, "", opts...)
+}
+
 type applicationIdentifierUriArgs struct {
 	// The resource ID of the application registration. Changing this forces a new resource to be created.
 	ApplicationId string `pulumi:"applicationId"`

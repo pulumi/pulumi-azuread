@@ -146,6 +146,12 @@ func (ClaimsMappingPolicyState) ElementType() reflect.Type {
 	return reflect.TypeOf((*claimsMappingPolicyState)(nil)).Elem()
 }
 
+// ClaimsMappingPolicyExists checks whether an existing ClaimsMappingPolicy resource with the given ID exists.
+func ClaimsMappingPolicyExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ClaimsMappingPolicyState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/claimsMappingPolicy:ClaimsMappingPolicy", id, state, "", opts...)
+}
+
 type claimsMappingPolicyArgs struct {
 	// The claims mapping policy. This is a JSON formatted string, for which the `jsonencode()` function can be used.
 	Definitions []string `pulumi:"definitions"`

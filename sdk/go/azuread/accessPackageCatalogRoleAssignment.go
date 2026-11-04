@@ -147,6 +147,12 @@ func (AccessPackageCatalogRoleAssignmentState) ElementType() reflect.Type {
 	return reflect.TypeOf((*accessPackageCatalogRoleAssignmentState)(nil)).Elem()
 }
 
+// AccessPackageCatalogRoleAssignmentExists checks whether an existing AccessPackageCatalogRoleAssignment resource with the given ID exists.
+func AccessPackageCatalogRoleAssignmentExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *AccessPackageCatalogRoleAssignmentState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment", id, state, "", opts...)
+}
+
 type accessPackageCatalogRoleAssignmentArgs struct {
 	// The ID of the Catalog this role assignment will be scoped to. Changing this forces a new resource to be created.
 	CatalogId string `pulumi:"catalogId"`

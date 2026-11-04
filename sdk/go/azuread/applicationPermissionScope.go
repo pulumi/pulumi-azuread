@@ -227,6 +227,12 @@ func (ApplicationPermissionScopeState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationPermissionScopeState)(nil)).Elem()
 }
 
+// ApplicationPermissionScopeExists checks whether an existing ApplicationPermissionScope resource with the given ID exists.
+func ApplicationPermissionScopeExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationPermissionScopeState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationPermissionScope:ApplicationPermissionScope", id, state, "", opts...)
+}
+
 type applicationPermissionScopeArgs struct {
 	// Delegated permission description that appears in all tenant-wide admin consent experiences, intended to be read by an administrator granting the permission on behalf of all users.
 	AdminConsentDescription string `pulumi:"adminConsentDescription"`

@@ -1785,6 +1785,82 @@ class Application(pulumi.CustomResource):
         __props__.__dict__["web"] = web
         return Application(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            api: pulumi.Input[Optional[Union['ApplicationApiArgs', 'ApplicationApiArgsDict', 'outputs.ApplicationApi']]] = None,
+            app_role_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            app_roles: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationAppRoleArgs', 'ApplicationAppRoleArgsDict', 'outputs.ApplicationAppRole']]]]] = None,
+            client_id: pulumi.Input[Optional[_builtins.str]] = None,
+            description: pulumi.Input[Optional[_builtins.str]] = None,
+            device_only_auth_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            disabled_by_microsoft: pulumi.Input[Optional[_builtins.str]] = None,
+            display_name: pulumi.Input[Optional[_builtins.str]] = None,
+            fallback_public_client_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            feature_tags: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationFeatureTagArgs', 'ApplicationFeatureTagArgsDict', 'outputs.ApplicationFeatureTag']]]]] = None,
+            group_membership_claims: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            identifier_uris: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            logo_image: pulumi.Input[Optional[_builtins.str]] = None,
+            logo_url: pulumi.Input[Optional[_builtins.str]] = None,
+            marketing_url: pulumi.Input[Optional[_builtins.str]] = None,
+            notes: pulumi.Input[Optional[_builtins.str]] = None,
+            oauth2_permission_scope_ids: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            oauth2_post_response_required: pulumi.Input[Optional[_builtins.bool]] = None,
+            object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            optional_claims: pulumi.Input[Optional[Union['ApplicationOptionalClaimsArgs', 'ApplicationOptionalClaimsArgsDict', 'outputs.ApplicationOptionalClaims']]] = None,
+            owners: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            password: pulumi.Input[Optional[Union['ApplicationPasswordArgs', 'ApplicationPasswordArgsDict', 'outputs.ApplicationPassword']]] = None,
+            prevent_duplicate_names: pulumi.Input[Optional[_builtins.bool]] = None,
+            privacy_statement_url: pulumi.Input[Optional[_builtins.str]] = None,
+            public_client: pulumi.Input[Optional[Union['ApplicationPublicClientArgs', 'ApplicationPublicClientArgsDict', 'outputs.ApplicationPublicClient']]] = None,
+            publisher_domain: pulumi.Input[Optional[_builtins.str]] = None,
+            required_resource_accesses: pulumi.Input[Optional[Sequence[pulumi.Input[Union['ApplicationRequiredResourceAccessArgs', 'ApplicationRequiredResourceAccessArgsDict', 'outputs.ApplicationRequiredResourceAccess']]]]] = None,
+            service_management_reference: pulumi.Input[Optional[_builtins.str]] = None,
+            sign_in_audience: pulumi.Input[Optional[_builtins.str]] = None,
+            single_page_application: pulumi.Input[Optional[Union['ApplicationSinglePageApplicationArgs', 'ApplicationSinglePageApplicationArgsDict', 'outputs.ApplicationSinglePageApplication']]] = None,
+            support_url: pulumi.Input[Optional[_builtins.str]] = None,
+            tags: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            template_id: pulumi.Input[Optional[_builtins.str]] = None,
+            terms_of_service_url: pulumi.Input[Optional[_builtins.str]] = None,
+            web: pulumi.Input[Optional[Union['ApplicationWebArgs', 'ApplicationWebArgsDict', 'outputs.ApplicationWeb']]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["api"] = api
+        __props__["appRoleIds"] = app_role_ids
+        __props__["appRoles"] = app_roles
+        __props__["clientId"] = client_id
+        __props__["description"] = description
+        __props__["deviceOnlyAuthEnabled"] = device_only_auth_enabled
+        __props__["disabledByMicrosoft"] = disabled_by_microsoft
+        __props__["displayName"] = display_name
+        __props__["fallbackPublicClientEnabled"] = fallback_public_client_enabled
+        __props__["featureTags"] = feature_tags
+        __props__["groupMembershipClaims"] = group_membership_claims
+        __props__["identifierUris"] = identifier_uris
+        __props__["logoImage"] = logo_image
+        __props__["logoUrl"] = logo_url
+        __props__["marketingUrl"] = marketing_url
+        __props__["notes"] = notes
+        __props__["oauth2PermissionScopeIds"] = oauth2_permission_scope_ids
+        __props__["oauth2PostResponseRequired"] = oauth2_post_response_required
+        __props__["objectId"] = object_id
+        __props__["optionalClaims"] = optional_claims
+        __props__["owners"] = owners
+        __props__["password"] = password
+        __props__["preventDuplicateNames"] = prevent_duplicate_names
+        __props__["privacyStatementUrl"] = privacy_statement_url
+        __props__["publicClient"] = public_client
+        __props__["publisherDomain"] = publisher_domain
+        __props__["requiredResourceAccesses"] = required_resource_accesses
+        __props__["serviceManagementReference"] = service_management_reference
+        __props__["signInAudience"] = sign_in_audience
+        __props__["singlePageApplication"] = single_page_application
+        __props__["supportUrl"] = support_url
+        __props__["tags"] = tags
+        __props__["templateId"] = template_id
+        __props__["termsOfServiceUrl"] = terms_of_service_url
+        __props__["web"] = web
+        return pulumi.runtime.exists_resource(None, 'azuread:index/application:Application', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def api(self) -> pulumi.Output[Optional['outputs.ApplicationApi']]:

@@ -156,6 +156,12 @@ func (ApplicationFromTemplateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*applicationFromTemplateState)(nil)).Elem()
 }
 
+// ApplicationFromTemplateExists checks whether an existing ApplicationFromTemplate resource with the given ID exists.
+func ApplicationFromTemplateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ApplicationFromTemplateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("azuread:index/applicationFromTemplate:ApplicationFromTemplate", id, state, "", opts...)
+}
+
 type applicationFromTemplateArgs struct {
 	// The display name for the application.
 	DisplayName string `pulumi:"displayName"`

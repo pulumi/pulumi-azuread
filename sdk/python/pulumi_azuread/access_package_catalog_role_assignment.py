@@ -292,6 +292,18 @@ class AccessPackageCatalogRoleAssignment(pulumi.CustomResource):
         __props__.__dict__["role_id"] = role_id
         return AccessPackageCatalogRoleAssignment(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            catalog_id: pulumi.Input[Optional[_builtins.str]] = None,
+            principal_object_id: pulumi.Input[Optional[_builtins.str]] = None,
+            role_id: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["catalogId"] = catalog_id
+        __props__["principalObjectId"] = principal_object_id
+        __props__["roleId"] = role_id
+        return pulumi.runtime.exists_resource(None, 'azuread:index/accessPackageCatalogRoleAssignment:AccessPackageCatalogRoleAssignment', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="catalogId")
     def catalog_id(self) -> pulumi.Output[_builtins.str]:
