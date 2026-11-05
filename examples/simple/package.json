@@ -2,7 +2,7 @@
     "name": "aadsimple",
     "version": "0.0.1",
     "dependencies": {
-        "@pulumi/pulumi": "3.274.0",
+        "@pulumi/pulumi": "3.274.1",
         "@pulumi/random": "4.21.6",
         "@pulumi/azuread": "6.11.2"
     },
